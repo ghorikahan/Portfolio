@@ -1,0 +1,20 @@
+.projects-page {
+    min-height: 100vh;
+}
+
+/* Mobile Responsiveness for Projects Page */
+@media (max-width: 768px) {
+    .projects-page .section {
+        padding-top: 100px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-page .section {
+        padding-top: 90px !important;
+    }
+
+    .projects-page .section-header {
+        text-align: center;
+    }
+}

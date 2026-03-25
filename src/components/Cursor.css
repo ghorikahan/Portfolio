@@ -1,0 +1,71 @@
+.custom-cursor {
+    position: fixed;
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom-cursor.visible {
+    opacity: 1;
+}
+
+.cursor-inner {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-outer {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.custom-cursor.hover .cursor-inner {
+    width: 4px;
+    height: 4px;
+    background: var(--gold-light);
+}
+
+.custom-cursor.hover .cursor-outer {
+    width: 52px;
+    height: 52px;
+    background-color: rgba(201, 168, 76, 0.08);
+    border-color: rgba(201, 168, 76, 0.6);
+}
+
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+    html, body, * {
+        cursor: none !important;
+    }
+}
+
+/* Show default cursor on touch devices */
+@media (pointer: coarse) {
+    .custom-cursor {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+    }
+}

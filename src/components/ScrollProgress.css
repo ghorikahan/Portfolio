@@ -1,0 +1,17 @@
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--red), var(--gold));
+    background-size: 200%;
+    transform-origin: 0%;
+    z-index: 10001;
+    animation: shineScroll 4s ease infinite;
+}
+
+@keyframes shineScroll {
+    0%, 100% { background-position: 0%; }
+    50%       { background-position: 100%; }
+}
