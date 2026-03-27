@@ -329,6 +329,7 @@ const Home = () => {
                         <div className="social-links">
                             <a href="https://github.com/ghorikahan" target="_blank" rel="noopener noreferrer" className="social-icon"><Github size={20} /></a>
                             <a href="https://www.linkedin.com/in/kahan-ghori-157487394/" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
+                            <a href="https://www.youtube.com/@kahanghori" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={20} /></a>
                             <a href="mailto:kahan.ghori.cg@gmail.com" className="social-icon"><Mail size={20} /></a>
                         </div>
 

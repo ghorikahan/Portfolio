@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, MapPin, Send, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Send, Github, Linkedin, Youtube, Phone } from 'lucide-react';
 import './Contact.css';
 import { useForm, ValidationError } from '@formspree/react';
 
@@ -72,11 +72,20 @@ const Contact = () => {
                                 </div>
                             </div>
 
+                            <div className="info-item">
+                                <div className="icon-box"><Phone size={24} /></div>
+                                <div>
+                                    <h3 className="item-label">Phone</h3>
+                                    <a href="tel:+917043669466" className="item-link">+91 7043669466</a>
+                                </div>
+                            </div>
+
                             <div className="social-connect">
                                 <h3 className="social-title">Connect</h3>
                                 <div className="social-icons">
                                     <a href="https://github.com/ghorikahan" target="_blank" rel="noopener noreferrer" className="social-btn"><Github size={20} /></a>
                                     <a href="https://www.linkedin.com/in/kahan-ghori-157487394/" target="_blank" rel="noopener noreferrer" className="social-btn"><Linkedin size={20} /></a>
+                                    <a href="https://www.youtube.com/@kahanghori" target="_blank" rel="noopener noreferrer" className="social-btn"><Youtube size={20} /></a>
                                     <a href="mailto:kahan.ghori.cg@gmail.com" className="social-btn"><Mail size={20} /></a>
                                 </div>
                             </div>

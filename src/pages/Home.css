@@ -1126,5 +1126,13 @@
     .technical-skills-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; padding: 0 1rem; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
     .skill-card { padding: 1rem 0.75rem; }
-}. h e r o - c o n t e n t ,   . a b o u t - b i o - c o l u m n   {   c u r s o r :   d e f a u l t ;   t r a n s i t i o n :   b o r d e r - c o l o r   0 . 3 s   e a s e ;   }   . h e r o - c o n t e n t : h o v e r ,   . a b o u t - b i o - c o l u m n : h o v e r   {   b o r d e r - c o l o r :   v a r ( - - g o l d ) ;   }  
- 
+}
+
+.hero-content, .about-bio-column {
+    cursor: default;
+    transition: border-color 0.3s ease;
+}
+
+.hero-content:hover, .about-bio-column:hover {
+    border-color: var(--gold);
+}

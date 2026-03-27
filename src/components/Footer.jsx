@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText, Youtube } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -33,6 +33,9 @@ const Footer = () => {
                         </a>
                         <a href="https://www.linkedin.com/in/kahan-ghori-157487394/" target="_blank" rel="noopener noreferrer">
                             <Linkedin size={20} />
+                        </a>
+                        <a href="https://www.youtube.com/@kahanghori" target="_blank" rel="noopener noreferrer">
+                            <Youtube size={20} />
                         </a>
                     </div>
                 </div>
