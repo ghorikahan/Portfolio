@@ -59,7 +59,7 @@
 }
 
 .logo:hover .navbar-logo-img {
-    transform: translateY(4px) scale(1.1);
+    transform: translateY(4px) scale(1.05);
 }
 
 .desktop-nav-group {
@@ -166,6 +166,10 @@
 }
 
 @media (max-width: 1024px) {
+    :root {
+        --header-height: 70px;
+    }
+
     .desktop-only {
         display: none;
     }
@@ -174,17 +178,38 @@
         display: flex;
     }
 
-    .logo-text {
-        font-size: 1.5rem;
+    .navbar {
+        height: var(--header-height);
     }
 
-    .navbar {
-        height: 70px;
+    .navbar-logo-img {
+        height: 60px;
+        margin-left: -1rem;
+    }
+
+    .logo-icon {
+        width: 32px;
+        height: 32px;
     }
 }
 
 @media (max-width: 480px) {
-    .logo-text {
-        font-size: 1.2rem;
+    .navbar-logo-img {
+        height: 50px;
+        margin-left: -0.5rem;
+    }
+    
+    .logo-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .mobile-menu {
+        padding: 1rem;
+    }
+
+    .mobile-link {
+        font-size: 10px;
+        padding: 0.8rem;
     }
 }
