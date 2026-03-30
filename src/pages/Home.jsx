@@ -21,6 +21,7 @@ import {
     Trophy,
     Rocket
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import profileImg from '../assets/Gemini_Generated_Image_7n4fz57n4fz57n4f.png';
 import jpmorganCert from '../assets/jpmorgan-certificate.jpg';
 import microsoftCert from '../assets/microsoft-certificate.jpg';
@@ -428,9 +429,9 @@ const Home = () => {
                                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                                     View Resume <FileText size={18} />
                                 </a>
-                                <a href="/contact" className="btn btn-outline">
+                                <Link to="/contact" className="btn btn-outline">
                                     Contact Me
-                                </a>
+                                </Link>
                             </div>
 
                             <div className="social-links">
@@ -630,7 +631,7 @@ const Home = () => {
                                 <Trophy className="section-icon" />
                             </div>
                             <div className="section-title-group">
-                                <h2 className="section-main-title">Hakathon <span className="text-gradient">certificate</span></h2>
+                                <h2 className="section-main-title">Hackathon <span className="text-gradient">certificate</span></h2>
                                 <p className="section-subtitle">Competitive events and rapid development challenges.</p>
                             </div>
                         </div>

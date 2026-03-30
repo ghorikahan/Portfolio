@@ -547,11 +547,53 @@
 }
 
 /* ─── Certificates ─── */
+.achievements-section,
 .certificates-section {
     background: transparent;
+    margin-bottom: 6rem;
 }
 
-.certificates-grid {
+.section-header-inline {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding: 0 1rem;
+}
+
+.section-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(201, 168, 76, 0.05);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-icon {
+    color: var(--gold);
+}
+
+.section-main-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.section-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.certificates-grid,
+.hackathons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
@@ -1022,7 +1064,8 @@
     .hero-container { gap: calc(3rem + 2vw); }
     .hero-content   { padding-left: 4rem; }
     .skills-grid    { grid-template-columns: repeat(2, 1fr); }
-    .certificates-grid { grid-template-columns: repeat(2, 1fr); }
+    .certificates-grid,
+    .hackathons-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 968px) {
@@ -1085,9 +1128,42 @@
     }
 
     .skills-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; gap: 1.25rem; }
-    .certificates-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; gap: 1.25rem; }
+    .section-header-inline {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .certificates-grid,
+    .hackathons-grid { 
+        grid-template-columns: 1fr; 
+        max-width: 500px; 
+        margin: 0 auto; 
+        gap: 1.5rem; 
+        padding: 0 1.25rem;
+    }
+
     .projects-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; gap: 1.5rem; }
     .technical-skills-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 500px; margin: 0 auto; }
+    
+    .cert-overlay { 
+        opacity: 0.95; 
+        background: linear-gradient(to bottom,
+            rgba(14, 13, 11, 0.4) 0%,
+            rgba(14, 13, 11, 0.85) 50%,
+            rgba(14, 13, 11, 0.98) 100%);
+        padding: 1.25rem; 
+    }
+    
+    .cert-overlay-content { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+
+    .cert-overlay-title { font-size: 1.1rem; }
+    .cert-overlay-org { font-size: 0.7rem; }
     
     .cert-type-badge { display: none !important; }
 }
@@ -1128,14 +1204,20 @@
     .projects-grid { padding: 0 1rem; }
     
 
-    .certificates-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; padding: 0; }
+    .certificates-grid,
+    .hackathons-grid { 
+        grid-template-columns: 1fr; 
+        gap: 1.25rem; 
+        padding: 0 1rem; 
+    }
+
     .cert-overlay { padding: 1rem; }
-    .cert-overlay-title { font-size: 0.9rem; }
-    .cert-overlay-org { font-size: 0.6rem; }
+    .cert-overlay-title { font-size: 1rem; }
+    .cert-overlay-org { font-size: 0.65rem; }
     .cert-year-badge { font-size: 0.55rem; padding: 0.2rem 0.5rem; top: 0.75rem; right: 0.75rem; }
     .cert-type-badge { display: none !important; }
-    .cert-overlay-link { font-size: 0.5rem; padding: 0.3rem 0.6rem; }
-    .cert-overlay-date { font-size: 0.6rem; }
+    .cert-overlay-link { font-size: 0.55rem; padding: 0.35rem 0.7rem; }
+    .cert-overlay-date { font-size: 0.65rem; }
 }
 
 @media (max-width: 360px) {

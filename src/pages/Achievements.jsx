@@ -222,7 +222,7 @@ const Achievements = () => {
                             <Trophy className="section-icon" />
                         </div>
                         <div className="section-title-group">
-                            <h2 className="section-main-title">Hakathon <span className="text-gradient">certificate</span></h2>
+                            <h2 className="section-main-title">Hackathon <span className="text-gradient">certificate</span></h2>
                             <p className="section-subtitle">Competitive events and rapid development challenges.</p>
                         </div>
                     </div>
