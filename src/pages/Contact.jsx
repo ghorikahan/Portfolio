@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, MapPin, Send, Github, Linkedin, Youtube, Phone } from 'lucide-react';
+import LeetCodeIcon from '../components/LeetCodeIcon';
 import './Contact.css';
 import { useForm, ValidationError } from '@formspree/react';
 
@@ -85,6 +86,7 @@ const Contact = () => {
                                 <div className="social-icons">
                                     <a href="https://github.com/ghorikahan" target="_blank" rel="noopener noreferrer" className="social-btn"><Github size={20} /></a>
                                     <a href="https://www.linkedin.com/in/kahan-ghori-157487394/" target="_blank" rel="noopener noreferrer" className="social-btn"><Linkedin size={20} /></a>
+                                    <a href="https://leetcode.com/u/Ghori_Kahan05/" target="_blank" rel="noopener noreferrer" className="social-btn"><LeetCodeIcon size={20} /></a>
                                     <a href="https://www.youtube.com/@kahanghori" target="_blank" rel="noopener noreferrer" className="social-btn"><Youtube size={20} /></a>
                                     <a href="mailto:kahan.ghori.cg@gmail.com" className="social-btn"><Mail size={20} /></a>
                                 </div>

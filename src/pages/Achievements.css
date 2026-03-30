@@ -1,21 +1,78 @@
 .achievements-page {
     min-height: 100vh;
-    padding-top: calc(var(--header-height) + 3rem);
-    padding-bottom: 4rem;
+    padding-top: calc(var(--header-height) + 4rem);
+    padding-bottom: 6rem;
 }
 
-.certificates-section {
-    background: transparent;
+.page-header {
+    margin-bottom: 5rem;
 }
 
-.certificates-grid {
+.page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.page-subtitle {
+    font-family: 'DM Mono', monospace;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    max-width: 900px;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+
+.achievements-section {
+    margin-bottom: 8rem;
+}
+
+.section-header-inline {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    padding: 0 1rem;
+}
+
+.section-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(201, 168, 76, 0.05);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-icon {
+    color: var(--gold);
+}
+
+.section-main-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--mid);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.certificates-grid, 
+.hackathons-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
+    gap: 2rem;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -197,6 +254,12 @@
 .certificate-card:hover .cert-overlay-content {
     transform: translateY(0);
     opacity: 1;
+}
+
+.hack-achievement {
+    background: rgba(45, 122, 238, 0.12) !important;
+    color: #4facfe !important;
+    border-color: rgba(45, 122, 238, 0.25) !important;
 }
 
 .cert-type-badge {

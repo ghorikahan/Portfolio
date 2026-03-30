@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Code2, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from '../assets/logo-v2.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -47,8 +48,8 @@ const Navbar = () => {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container nav-container">
                 <Link to="/" className="logo">
-                    <Code2 size={28} className="logo-icon" />
-                    <span className="logo-text">ghori kahan</span>
+                    <Code2 size={52} className="logo-icon" />
+                    <img src={logoImg} alt="GK Logo" className="navbar-logo-img" />
                 </Link>
 
                 <div className="desktop-nav-group">

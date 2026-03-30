@@ -17,15 +17,26 @@ import {
     Award,
     MapPin,
     Youtube,
-    FileText
+    FileText,
+    Trophy,
+    Rocket
 } from 'lucide-react';
 import profileImg from '../assets/Gemini_Generated_Image_7n4fz57n4fz57n4f.png';
 import jpmorganCert from '../assets/jpmorgan-certificate.jpg';
 import microsoftCert from '../assets/microsoft-certificate.jpg';
 import parulCert from '../assets/parul-certificate.jpg';
 import cppCert from '../assets/cpp-certificate.jpg';
+import awsCert from '../assets/aws-documentdb.png';
+import databricksCert from '../assets/databricks-ml.png';
+import electrosphereCert from '../assets/electrosphere-cert.png';
+import sangamHackathonCert from '../assets/sangam-hackathon.png';
+import codematrixRound1 from '../assets/codematrix-round1.png';
+import codematrixExcellence from '../assets/codematrix-excellence.png';
+import finagentHackathon from '../assets/finagent-hackathon.png';
+import sangamIdCard from '../assets/sangam-id-card.jpg';
 import './Home.css';
 import TiltCard from '../components/TiltCard';
+import LeetCodeIcon from '../components/LeetCodeIcon';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +53,7 @@ const Home = () => {
     const projectsRef = useRef(null);
 
     const certificatesRef = useRef(null);
+    const hackathonsRef = useRef(null);
 
     const [titleIndex, setTitleIndex] = useState(0);
     const titles = [
@@ -77,7 +89,11 @@ const Home = () => {
                     y: 0, opacity: 1,
                     duration: 1.2,
                     ease: "power3.out",
-                    scrollTrigger: { trigger: header, start: "top 85%" }
+                    scrollTrigger: { 
+                        trigger: header, 
+                        start: "top 85%",
+                        toggleActions: "play reverse play reverse"
+                    }
                 }
             );
         });
@@ -90,7 +106,11 @@ const Home = () => {
                 duration: 1.2,
                 ease: "expo.out",
                 stagger: 0.15,
-                scrollTrigger: { trigger: skillsRef.current, start: "top 80%" }
+                scrollTrigger: { 
+                    trigger: skillsRef.current, 
+                    start: "top 80%",
+                    toggleActions: "play reverse play reverse"
+                }
             }
         );
 
@@ -102,7 +122,11 @@ const Home = () => {
                 duration: 0.8,
                 ease: "back.out(1.2)",
                 stagger: { amount: 0.6, from: "random" },
-                scrollTrigger: { trigger: technicalSkillsRef.current, start: "top 80%" }
+                scrollTrigger: { 
+                    trigger: technicalSkillsRef.current, 
+                    start: "top 80%",
+                    toggleActions: "play reverse play reverse"
+                }
             }
         );
 
@@ -114,19 +138,45 @@ const Home = () => {
                 duration: 1.4,
                 ease: "expo.out",
                 stagger: 0.2,
-                scrollTrigger: { trigger: projectsRef.current, start: "top 75%" }
+                scrollTrigger: { 
+                    trigger: projectsRef.current, 
+                    start: "top 75%",
+                    toggleActions: "play reverse play reverse"
+                }
             }
         );
 
-        // Achievements / Certificates 3D Reveal
-        gsap.fromTo(gsap.utils.toArray('.certificate-card'),
-            { y: 60, opacity: 0, rotationY: -10, transformOrigin: "left center" },
+        // Certificates Animation
+        const certificateCards = gsap.utils.toArray('.certificates-grid .certificate-card');
+        gsap.fromTo(certificateCards,
+            { y: 50, opacity: 0 },
             {
-                y: 0, opacity: 1, rotationY: 0,
-                duration: 1.4,
-                ease: "expo.out",
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: certificatesRef.current,
+                    start: "top 80%",
+                    toggleActions: "play reverse play reverse"
+                }
+            }
+        );
+
+        // Hackathons Animation
+        const hackathonCards = gsap.utils.toArray('.hackathons-grid .certificate-card');
+        gsap.fromTo(hackathonCards,
+            { y: 50, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
                 stagger: 0.2,
-                scrollTrigger: { trigger: certificatesRef.current, start: "top 80%" }
+                scrollTrigger: {
+                    trigger: hackathonsRef.current,
+                    start: "top 80%",
+                    toggleActions: "play reverse play reverse"
+                }
             }
         );
 
@@ -149,7 +199,7 @@ const Home = () => {
             name: "Frontend Development",
             icon: <Layout />,
             desc: "Creating immersive, responsive, and high-performance user interfaces with modern frameworks.",
-            items: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"]
+            items: ["React.js", "HTML5", "CSS3", "Tailwind CSS"]
         },
         {
             name: "Backend Development",
@@ -167,7 +217,7 @@ const Home = () => {
             name: "Tools & Others",
             icon: <Cpu />,
             desc: "Optimizing development workflows and ensuring seamless collaboration across engineering teams.",
-            items: ["Git & GitHub", "Figma", "VS Code"]
+            items: ["Git & GitHub", "Figma", "VS Code", "Postman", "Vercel", "Netlify", "Render", "Hostinger"]
         }
     ];
 
@@ -244,6 +294,24 @@ const Home = () => {
 
     const certificates = [
         {
+            title: "Getting Started with Amazon DocumentDB",
+            organization: "Simplilearn (AWS)",
+            type: "Certificate of Completion",
+            year: "2026",
+            date: "February 18th, 2026",
+            image: awsCert,
+            link: "#"
+        },
+        {
+            title: "Get Started with Databricks for Machine Learning",
+            organization: "Simplilearn (Databricks)",
+            type: "Declaration of Completion",
+            year: "2026",
+            date: "February 17th, 2026",
+            image: databricksCert,
+            link: "#"
+        },
+        {
             title: "Software Engineering Job Simulation",
             organization: "JPMorgan Chase & Co.",
             type: "Certificate of Completion",
@@ -262,21 +330,59 @@ const Home = () => {
             link: "https://media.licdn.com/dms/image/v2/D5622AQFFWC0xy5ZlTg/feedshare-shrink_2048_1536/B56ZtgFxi_JIAw-/0/1766843686696?e=1775088000&v=beta&t=nqI6aeGyK-96JO-8LkOy1yt2sLD0AK2FZg11_hqlfl4"
         },
         {
-            title: "Tech Expo 2026 - Expenses Management",
-            organization: "Parul University",
-            type: "Certificate of Participation",
-            year: "2026",
-            date: "February 3rd-4th, 2026",
-            image: parulCert,
-            link: "#"
-        },
-        {
             title: "Introduction to C++",
             organization: "Sololearn",
             type: "Course Certificate",
             year: "2026",
             date: "March 6th, 2026",
             image: cppCert,
+            link: "#"
+        }
+    ];
+
+    const hackathons = [
+        {
+            title: "CodeMatrix: Genesis Hackathon",
+            project: "Competitive Coding Round 1",
+            organization: "AITH, Kanpur",
+            role: "Developer (Team CodeDeterminant)",
+            year: "2026",
+            date: "2026",
+            image: codematrixRound1,
+            achievement: "Round 1 Milestone",
+            link: "#"
+        },
+        {
+            title: "CodeMatrix: Genesis Excellence",
+            project: "CodeMatrix Genesis Achievement",
+            organization: "GDG DR AITD, Kanpur",
+            role: "Developer",
+            year: "2026",
+            date: "2026",
+            image: codematrixExcellence,
+            achievement: "Certificate of Excellence",
+            link: "#"
+        },
+        {
+            title: "FinAgent Hackathon",
+            project: "Financial Technology Innovation",
+            organization: "IIT Bombay (Unstop)",
+            role: "Developer",
+            year: "2026",
+            date: "2026",
+            image: finagentHackathon,
+            achievement: "National Participation",
+            link: "#"
+        },
+        {
+            title: "Tech Expo 2026",
+            project: "Expenses Management System",
+            organization: "Parul University",
+            role: "Developer",
+            year: "2026",
+            date: "Feb 3rd-4th, 2026",
+            image: parulCert,
+            achievement: "Participation & Showcase",
             link: "#"
         }
     ];
@@ -317,20 +423,23 @@ const Home = () => {
                             I craft accessible, pixel-perfect, and performant web experiences that leave a lasting impression.
                         </p>
 
-                        <div ref={actionsRef} className="hero-actions">
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                                View Resume <FileText size={18} />
-                            </a>
-                            <a href="/contact" className="btn btn-outline">
-                                Contact Me
-                            </a>
-                        </div>
+                        <div className="hero-footer">
+                            <div ref={actionsRef} className="hero-actions">
+                                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                                    View Resume <FileText size={18} />
+                                </a>
+                                <a href="/contact" className="btn btn-outline">
+                                    Contact Me
+                                </a>
+                            </div>
 
-                        <div className="social-links">
-                            <a href="https://github.com/ghorikahan" target="_blank" rel="noopener noreferrer" className="social-icon"><Github size={20} /></a>
-                            <a href="https://www.linkedin.com/in/kahan-ghori-157487394/" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
-                            <a href="https://www.youtube.com/@kahanghori" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={20} /></a>
-                            <a href="mailto:kahan.ghori.cg@gmail.com" className="social-icon"><Mail size={20} /></a>
+                            <div className="social-links">
+                                <a href="https://github.com/ghorikahan" target="_blank" rel="noopener noreferrer" className="social-icon"><Github size={20} /></a>
+                                <a href="https://www.linkedin.com/in/kahan-ghori-157487394/" target="_blank" rel="noopener noreferrer" className="social-icon"><Linkedin size={20} /></a>
+                                <a href="https://leetcode.com/u/Ghori_Kahan05/" target="_blank" rel="noopener noreferrer" className="social-icon"><LeetCodeIcon size={20} /></a>
+                                <a href="https://www.youtube.com/@kahanghori" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={20} /></a>
+                                <a href="mailto:kahan.ghori.cg@gmail.com" className="social-icon"><Mail size={20} /></a>
+                            </div>
                         </div>
 
                         <div className="hero-location" style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
@@ -455,54 +564,118 @@ const Home = () => {
             </section>
 
             {/* Achievements Section */}
-            <section className="section certificates-section" id="achievements" ref={certificatesRef}>
+            <div className="achievements-section-home" id="achievements">
                 <div className="container">
                     <div className="section-header">
-                        <h2 className="section-title">My <span className="text-gradient">Achievements</span></h2>
-                        <p className="section-desc">Recognition of my continuous learning and specialized training.</p>
+                        <h2 className="section-title">Honors & <span className="text-gradient">Achievements</span></h2>
+                        <p className="section-desc">Technical certifications and competitive milestones.</p>
                     </div>
 
-                    <div className="certificates-grid">
-                        {certificates.map((cert, index) => (
-                            <div key={index} className="certificate-card">
-                                <div className="cert-visual-card">
-                                    <div className="cert-year-badge">{cert.year}</div>
-                                    <div className="cert-type-badge">{cert.type}</div>
+                    {/* Skill's certificate Section */}
+                    <section className="achievements-section" ref={certificatesRef}>
+                        <div className="section-header-inline">
+                            <div className="section-icon-box">
+                                <Award className="section-icon" />
+                            </div>
+                            <div className="section-title-group">
+                                <h2 className="section-main-title">Skill's <span className="text-gradient">certificate</span></h2>
+                                <p className="section-subtitle">Verified credentials and professional training in core technologies.</p>
+                            </div>
+                        </div>
 
-                                    <div className="cert-image-container">
-                                        <img
-                                            src={cert.image}
-                                            alt={cert.title}
-                                            className="cert-image"
-                                            onError={(e) => {
-                                                e.target.style.display = 'none';
-                                                e.target.nextSibling.style.display = 'flex';
-                                            }}
-                                        />
-                                        <div className="cert-placeholder">
-                                            <Award size={48} />
-                                            <span>Add certificate image to src/assets/</span>
+                        <div className="certificates-grid">
+                            {certificates.map((cert, index) => (
+                                <div key={index} className="certificate-card">
+                                    <div className="cert-visual-card">
+                                        <div className="cert-year-badge">{cert.year}</div>
+
+                                        <div className="cert-image-container">
+                                            <img
+                                                src={cert.image}
+                                                alt={cert.title}
+                                                className="cert-image"
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                    e.target.nextSibling.style.display = 'flex';
+                                                }}
+                                            />
+                                            <div className="cert-placeholder">
+                                                <Award size={48} />
+                                                <span>Certificate Image Needed</span>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="cert-overlay">
-                                        <div className="cert-overlay-content">
-                                            <h3 className="cert-overlay-title">{cert.title}</h3>
-                                            <p className="cert-overlay-org">{cert.organization}</p>
-                                            <div className="cert-overlay-footer">
-                                                <span className="cert-overlay-date">{cert.date}</span>
-                                                <a href={cert.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
-                                                    View <ExternalLink size={14} />
-                                                </a>
+                                        <div className="cert-overlay">
+                                            <div className="cert-overlay-content">
+                                                <h3 className="cert-overlay-title">{cert.title}</h3>
+                                                <p className="cert-overlay-org">{cert.organization}</p>
+                                                <div className="cert-overlay-footer">
+                                                    <span className="cert-overlay-date">{cert.date}</span>
+                                                    <a href={cert.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                        Verify <ExternalLink size={14} />
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Hakathon certificate Section */}
+                    <section className="achievements-section" ref={hackathonsRef}>
+                        <div className="section-header-inline">
+                            <div className="section-icon-box">
+                                <Trophy className="section-icon" />
                             </div>
-                        ))}
-                    </div>
+                            <div className="section-title-group">
+                                <h2 className="section-main-title">Hakathon <span className="text-gradient">certificate</span></h2>
+                                <p className="section-subtitle">Competitive events and rapid development challenges.</p>
+                            </div>
+                        </div>
+
+                        <div className="hackathons-grid">
+                            {hackathons.map((hack, index) => (
+                                <div key={index} className="certificate-card hackathon-card">
+                                    <div className="cert-visual-card">
+                                        <div className="cert-year-badge">{hack.year}</div>
+
+                                        <div className="cert-image-container">
+                                            <img
+                                                src={hack.image}
+                                                alt={hack.title}
+                                                className="cert-image"
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                    e.target.nextSibling.style.display = 'flex';
+                                                }}
+                                            />
+                                            <div className="cert-placeholder">
+                                                <span className="placeholder-icon">🚀</span>
+                                                <span>Hackathon Visual Needed</span>
+                                            </div>
+                                        </div>
+
+                                        <div className="cert-overlay">
+                                            <div className="cert-overlay-content">
+                                                <h3 className="cert-overlay-title">{hack.title}</h3>
+                                                <p className="cert-overlay-org">{hack.project}</p>
+                                                <div className="cert-overlay-footer">
+                                                    <span className="cert-overlay-date">{hack.organization} • {hack.date}</span>
+                                                    <a href={hack.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                        Details <ExternalLink size={14} />
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
         </div>
     );
 };
