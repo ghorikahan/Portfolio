@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Globe, Github, ArrowRight, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import TiltCard from '../components/TiltCard';
 import './Home.css'; // Reuse existing styles
 import './Projects.css'; // Projects-specific styles
@@ -124,9 +125,9 @@ const Projects = () => {
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
                             Working on something new?
                         </p>
-                        <a href="/contact" className="btn btn-primary">
+                        <Link to="/contact" className="btn btn-primary">
                             Let's Collaborate <ArrowRight size={18} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
