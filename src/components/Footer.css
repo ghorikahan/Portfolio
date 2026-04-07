@@ -19,7 +19,9 @@
 .footer-cta::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--gold), var(--red), var(--gold));
     background-size: 200%;
@@ -27,8 +29,15 @@
 }
 
 @keyframes shineBar {
-    0%, 100% { background-position: 0%; }
-    50%       { background-position: 100%; }
+
+    0%,
+    100% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
 }
 
 .cta-title {
@@ -137,7 +146,9 @@
 }
 
 @media (max-width: 640px) {
-    .cta-title { font-size: 32px; }
+    .cta-title {
+        font-size: 32px;
+    }
 
     .footer-bottom {
         flex-direction: column;

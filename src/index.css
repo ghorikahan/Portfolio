@@ -1,98 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400;500&display=swap');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 :root {
-  /* ── Warm Dark Palette (from KahanProfile) ── */
-  --ink:        #0e0d0b;
-  --charcoal:   #161412;
-  --stone:      #1e1b17;
-  --slate:      #2a2520;
-  --warm-gray:  #3d3730;
-  --mid:        #6b6055;
-  --pale:       #b0a89e;
-  --cream:      #ede8e1;
-  --white:      #f5f1eb;
-  --gold:       #c9a84c;
+  /* ── Deep Dark Palette (Ink & Gold) ── */
+  --ink: #0a0908;
+  --charcoal: #12100e;
+  --stone: #1a1714;
+  --slate: #26221d;
+  --warm-gray: #3d3630;
+  --mid: #6b5f54;
+  --pale: #b0a69d;
+  --cream: #ede7e0;
+  --white: #fdfcfb;
+  --gold: #c9a84c;
   --gold-light: #e8c878;
-  --red:        #c44b2b;
+  --red: #c44b2b;
 
-  /* ── Mapped to original var names for compatibility ── */
-  --bg-primary:    var(--ink);
-  --bg-secondary:  var(--charcoal);
-  --bg-card:       var(--stone);
+  /* ── Layout & Semantic Vars ── */
+  --bg-primary: var(--ink);
+  --bg-secondary: var(--charcoal);
+  --bg-card: var(--stone);
 
-  --text-primary:   var(--white);
+  --text-primary: var(--white);
   --text-secondary: var(--pale);
-  --text-muted:     var(--mid);
+  --text-muted: var(--mid);
 
-  --accent-primary:   var(--gold);
-  --accent-glow:      rgba(201, 168, 76, 0.35);
+  --accent-primary: var(--gold);
+  --accent-glow: rgba(201, 168, 76, 0.3);
   --accent-secondary: var(--gold-light);
 
-  --border-subtle: var(--slate);
-  --border-light:  var(--warm-gray);
+  --border-subtle: rgba(201, 168, 76, 0.1);
+  --border-light: rgba(201, 168, 76, 0.2);
 
-  /* ── Typography ── */
-  --font-sans:    'DM Sans', sans-serif;
+  /* ── Dynamic Layout Surfaces ── */
+  --surface-glass: rgba(18, 16, 14, 0.8);
+  --surface-glass-top: rgba(18, 16, 14, 0.95);
+  --blur-amount: 20px;
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --glow-opacity: 0.08;
+
+  /* ── Shared Constants ── */
+  --font-sans: 'DM Sans', sans-serif;
   --font-display: 'Bebas Neue', sans-serif;
-  --font-mono:    'DM Mono', monospace;
-
-  /* ── Spacing & Structure ── */
-  --radius-sm:   0.25rem;
-  --radius-md:   0.375rem;
-  --radius-lg:   0.5rem;
+  --font-mono: 'DM Mono', monospace;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
   --radius-full: 9999px;
-
   --container-width: 1200px;
-  --header-height:   100px;
-
-  /* Additional rgba helpers */
-  --bg-card-grad: rgba(30, 28, 24, 0.95);
-  --bg-hover-grad: rgba(25, 23, 20, 0.98);
-  --bg-overlay: rgba(14, 13, 11, 0.85);
-  --shadow-color: rgba(0, 0, 0, 0.5);
-
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
 }
 
 /* ── Light Mode Palette overrides ── */
 [data-theme="light"] {
-  /* Inverse Palette Definitions */
-  --ink:        #fdfbf7;
-  --charcoal:   #f5f1eb;
-  --stone:      #ede8e1;
-  --slate:      #dcd5cc;
-  --warm-gray:  #c8bfb5;
-  --mid:        #877a6b;
-  --pale:       #4a433a;
-  --cream:      #1a1714;
-  --white:      #0e0d0b;
-  
-  /* Gradation overrides for hardcoded gradients */
-  --bg-card-grad: rgba(237, 232, 225, 0.95);
-  --bg-hover-grad: rgba(245, 241, 235, 0.98);
-  --bg-overlay: rgba(253, 251, 247, 0.85);
+  /* ── Premium Light Palette (Ivory & Gold) ── */
+  --ink: #fdfcfb;
+  --charcoal: #f9f6f2;
+  --stone: #f0ece6;
+  --slate: #e5e0d8;
+  --warm-gray: #d6cfc5;
+  --mid: #8a7f72;
+  --pale: #4a443d;
+  --cream: #0a0908;
+  --white: #0a0908;
+
+  /* ── Semantic Mappings ── */
+  --bg-primary: var(--ink);
+  --bg-secondary: var(--charcoal);
+  --bg-card: var(--stone);
+
+  --text-primary: #0a0908;
+  --text-secondary: #4a443d;
+  --text-muted: #8a7f72;
+
+  --border-subtle: rgba(201, 168, 76, 0.15);
+  --border-light: rgba(201, 168, 76, 0.3);
+
+  /* ── Dynamic Layout Surfaces ── */
+  --surface-glass: rgba(255, 255, 255, 0.8);
+  --surface-glass-top: rgba(255, 255, 255, 0.95);
   --shadow-color: rgba(0, 0, 0, 0.08);
+  --glow-opacity: 0.04;
 
-  /* Semantic mappings */
-  --bg-primary:    var(--ink);
-  --bg-secondary:  var(--charcoal);
-  --bg-card:       var(--stone);
-
-  --text-primary:   var(--white);
-  --text-secondary: var(--pale);
-  --text-muted:     var(--mid);
-
-  --border-subtle: var(--slate);
-  --border-light:  var(--warm-gray);
-
-  --accent-glow: rgba(201, 168, 76, 0.15);
+  --accent-glow: rgba(201, 168, 76, 0.2);
 }
 
 html {
@@ -100,7 +97,8 @@ html {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -127,12 +125,25 @@ body::before {
 
 /* ── Lenis ── */
 html.lenis,
-html.lenis body { height: auto; }
+html.lenis body {
+  height: auto;
+}
 
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: hidden; }
-.lenis.lenis-scrolling iframe { pointer-events: none; }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 
 /* ── Selection ── */
 ::selection {
@@ -145,7 +156,9 @@ a {
   text-decoration: none;
 }
 
-img, video, svg {
+img,
+video,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -166,17 +179,40 @@ button {
 }
 
 @media (max-width: 768px) {
-  .container { padding: 0 1.5rem; }
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  h3 { font-size: 1.5rem; }
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .container { padding: 0 1rem; }
-  .btn { padding: 0.6rem 1.25rem; font-size: 0.95rem; }
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
+  .container {
+    padding: 0 1rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
 }
 
 /* ── Text Gradient ── */
@@ -220,9 +256,11 @@ button {
 .btn-primary::after {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
-  width: 50%; height: 100%;
-  background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
   transform: skewX(-25deg);
   transition: none;
 }
@@ -232,8 +270,13 @@ button {
 }
 
 @keyframes shimmer {
-  0%   { left: -100%; }
-  100% { left: 200%; }
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 200%;
+  }
 }
 
 .btn-outline {
@@ -249,16 +292,30 @@ button {
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: var(--warm-gray); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--mid); }
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--warm-gray);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mid);
+}
 
 /* ─────────── BACKGROUND EFFECTS ─────────── */
 .background-effects {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
@@ -273,32 +330,43 @@ button {
 }
 
 .bg-orb-1 {
-  width: 600px; height: 600px;
+  width: 600px;
+  height: 600px;
   background: var(--gold);
-  top: -15%; left: -15%;
+  top: -15%;
+  left: -15%;
   animation-delay: 0s;
 }
 
 .bg-orb-2 {
-  width: 450px; height: 450px;
+  width: 450px;
+  height: 450px;
   background: var(--red);
-  bottom: -15%; right: -10%;
+  bottom: -15%;
+  right: -10%;
   animation-delay: -7s;
   animation-duration: 28s;
 }
 
 @keyframes floatOrb {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(80px, 40px) scale(1.08); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(80px, 40px) scale(1.08);
+  }
 }
 
 /* ── Grid Overlay ── */
 .bg-grid {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image:
-    linear-gradient(to right,  rgba(201, 168, 76, 0.03) 1px, transparent 1px),
+    linear-gradient(to right, rgba(201, 168, 76, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
@@ -307,21 +375,32 @@ button {
 /* ── Particles ── */
 .particles-container {
   position: absolute;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .particle {
   position: absolute;
   background: var(--gold);
   border-radius: 50%;
-  opacity: 0.2;
+  opacity: 0.15;
   animation: floatParticle 10s infinite linear;
 }
 
 @keyframes floatParticle {
-  0%   { transform: translateY(0) translateX(0); opacity: 0; }
-  50%  { opacity: 0.3; }
-  100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(40px);
+    opacity: 0;
+  }
 }
 
 /* ── Glass Panel ── */

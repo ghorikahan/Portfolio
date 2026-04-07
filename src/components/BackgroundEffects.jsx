@@ -16,8 +16,6 @@ const BackgroundEffects = () => {
 
     return (
         <div className="background-effects">
-
-
             {/* Floating Particles */}
             <div className="particles-container">
                 {particles.map((particle) => (

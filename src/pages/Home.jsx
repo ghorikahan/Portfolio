@@ -90,8 +90,8 @@ const Home = () => {
                     y: 0, opacity: 1,
                     duration: 1.2,
                     ease: "power3.out",
-                    scrollTrigger: { 
-                        trigger: header, 
+                    scrollTrigger: {
+                        trigger: header,
                         start: "top 85%",
                         toggleActions: "play reverse play reverse"
                     }
@@ -107,8 +107,8 @@ const Home = () => {
                 duration: 1.2,
                 ease: "expo.out",
                 stagger: 0.15,
-                scrollTrigger: { 
-                    trigger: skillsRef.current, 
+                scrollTrigger: {
+                    trigger: skillsRef.current,
                     start: "top 80%",
                     toggleActions: "play reverse play reverse"
                 }
@@ -123,8 +123,8 @@ const Home = () => {
                 duration: 0.8,
                 ease: "back.out(1.2)",
                 stagger: { amount: 0.6, from: "random" },
-                scrollTrigger: { 
-                    trigger: technicalSkillsRef.current, 
+                scrollTrigger: {
+                    trigger: technicalSkillsRef.current,
                     start: "top 80%",
                     toggleActions: "play reverse play reverse"
                 }
@@ -139,8 +139,8 @@ const Home = () => {
                 duration: 1.4,
                 ease: "expo.out",
                 stagger: 0.2,
-                scrollTrigger: { 
-                    trigger: projectsRef.current, 
+                scrollTrigger: {
+                    trigger: projectsRef.current,
                     start: "top 75%",
                     toggleActions: "play reverse play reverse"
                 }
@@ -199,63 +199,99 @@ const Home = () => {
         {
             name: "Frontend Development",
             icon: <Layout />,
-            desc: "Creating immersive, responsive, and high-performance user interfaces with modern frameworks.",
-            items: ["React.js", "HTML5", "CSS3", "Tailwind CSS"]
+            desc: "Specializing in crafting high-end, responsive user interfaces that prioritize speed and accessibility. I leverage modern frameworks like React and Vite to build modular components that provide a seamless user experience across all devices and screen sizes."
         },
         {
             name: "Backend Development",
             icon: <Terminal />,
-            desc: "Architecting robust server-side logic and scalable API infrastructures for complex applications.",
-            items: ["Node.js", "Express.js", "Restful APIs"]
+            desc: "Architecting scalable and secure server-side solutions using the Node.js ecosystem. From implementing complex business logic to building high-performance RESTful APIs, I ensure the backend infrastructure is robust and efficient."
         },
         {
             name: "Database & Cloud",
             icon: <Database />,
-            desc: "Managing data integrity and deploying resilient cloud solutions for modern web ecosystems.",
-            items: ["MongoDB"]
+            desc: "Expertise in designing logical and physical data models that ensure data integrity and performance. I manage modern database systems like MongoDB and deploy resilient cloud-hosted environments that offer high availability."
         },
         {
             name: "Tools & Others",
             icon: <Cpu />,
-            desc: "Optimizing development workflows and ensuring seamless collaboration across engineering teams.",
-            items: ["Git & GitHub", "Figma", "VS Code", "Postman", "Vercel", "Netlify", "Render", "Hostinger"]
+            desc: "Proficient in managing the entire development lifecycle, from sophisticated design prototyping in Figma to version control and automated deployments. I utilize industry-standard tools to streamline workflows and maintain peak productivity."
         }
     ];
 
-    const technicalSkills = [
-        {
-            name: "React.js",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-        },
-        {
-            name: "JavaScript",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-        },
-        {
-            name: "Node.js",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-        },
-        {
-            name: "HTML5",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-        },
-        {
-            name: "CSS3",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-        },
-        {
-            name: "MongoDB",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-        },
-        {
-            name: "Git",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-        },
-        {
-            name: "Express.js",
-            logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-        }
-    ];
+    const technicalSkills = {
+        frontend: [
+            {
+                name: "React.js",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg"
+            },
+            {
+                name: "JavaScript",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+            },
+            {
+                name: "HTML5",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+            },
+            {
+                name: "CSS3",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
+            },
+            {
+                name: "Tailwind CSS",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg"
+            },
+            {
+                name: "Vite",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg"
+            }
+        ],
+        backend: [
+            {
+                name: "Node.js",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg"
+            },
+            {
+                name: "Express.js",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg"
+            },
+            {
+                name: "Mongoose",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" // Mongoose doesn't have a devicon, MongoDB is close
+            }
+        ],
+        database: [
+            {
+                name: "MongoDB",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg"
+            },
+            {
+                name: "AWS",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+            }
+        ],
+        tools: [
+            {
+                name: "Git",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"
+            },
+            {
+                name: "GitHub",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"
+            },
+            {
+                name: "VS Code",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"
+            },
+            {
+                name: "Figma",
+                logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg"
+            },
+            {
+                name: "Postman",
+                logo: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg"
+            }
+        ]
+    };
 
     const projects = [
         {
@@ -481,11 +517,6 @@ const Home = () => {
                                 </div>
                                 <h3 className="skill-category">{category.name}</h3>
                                 <p className="skill-description">{category.desc}</p>
-                                <div className="skill-tags">
-                                    {category.items.map((item, i) => (
-                                        <span key={i} className="skill-tag">{item}</span>
-                                    ))}
-                                </div>
                             </div>
 
                         ))}
@@ -497,26 +528,42 @@ const Home = () => {
             <section className="section technical-skills-section" ref={technicalSkillsRef}>
                 <div className="container">
                     <div className="section-header">
-                        <h2 className="section-title">Technical <span className="text-gradient">Skills</span></h2>
-                        <p className="section-desc">Technologies and tools I work with.</p>
+                        <h2 className="section-title">Technical <span className="text-gradient">Stack</span></h2>
+                        <p className="section-desc">My professional toolkit for building enterprise-grade applications.</p>
                     </div>
 
-                    <div className="technical-skills-grid">
-                        {technicalSkills.map((skill, index) => (
-                            <div
-                                key={index}
-                                className="skill-logo-card"
-                                style={{ '--skill-index': index }}
-                            >
-                                <div className="skill-logo-wrapper">
-                                    <img
-                                        src={skill.logo}
-                                        alt={skill.name}
-                                        className="skill-logo"
-                                        loading="lazy"
-                                    />
+                    <div className="technical-skills-container">
+                        {Object.entries(technicalSkills).map(([category, skillsList], catIndex) => (
+                            <div key={category} className="technical-skill-category-section">
+                                <div className="category-header">
+                                    <div className="category-title-wrapper">
+                                        <span className="category-num">0{catIndex + 1}</span>
+                                        <h3 className="technical-skill-category-title">
+                                            {category.charAt(0).toUpperCase() + category.slice(1)} <span className="text-gradient">Core</span>
+                                        </h3>
+                                    </div>
+                                    <div className="category-line"></div>
                                 </div>
-                                <span className="skill-logo-name">{skill.name}</span>
+                                <div className="technical-skills-grid">
+                                    {skillsList.map((skill, index) => (
+                                        <div
+                                            key={index}
+                                            className="skill-logo-card"
+                                            style={{ '--skill-index': index }}
+                                        >
+                                            <div className="skill-card-glass"></div>
+                                            <div className="skill-logo-wrapper">
+                                                <img
+                                                    src={skill.logo}
+                                                    alt={skill.name}
+                                                    className="skill-logo"
+                                                    loading="lazy"
+                                                />
+                                            </div>
+                                            <span className="skill-logo-name">{skill.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -568,18 +615,18 @@ const Home = () => {
             <div className="achievements-section-home" id="achievements">
                 <div className="container">
                     <div className="section-header">
-                        <h2 className="section-title">Honors & <span className="text-gradient">Achievements</span></h2>
-                        <p className="section-desc">Technical certifications and competitive milestones.</p>
+                        <h2 className="section-title">Honours & <span className="text-gradient">Achievements</span></h2>
+                        <p className="section-desc">Technical certifications and competitive milestones earned through rigorous training and challenges.</p>
                     </div>
 
-                    {/* Skill's certificate Section */}
+                    {/* Technical Certificates Section */}
                     <section className="achievements-section" ref={certificatesRef}>
                         <div className="section-header-inline">
                             <div className="section-icon-box">
                                 <Award className="section-icon" />
                             </div>
                             <div className="section-title-group">
-                                <h2 className="section-main-title">Skill's <span className="text-gradient">certificate</span></h2>
+                                <h2 className="section-main-title">Technical <span className="text-gradient">Certificates</span></h2>
                                 <p className="section-subtitle">Verified credentials and professional training in core technologies.</p>
                             </div>
                         </div>
@@ -602,7 +649,7 @@ const Home = () => {
                                             />
                                             <div className="cert-placeholder">
                                                 <Award size={48} />
-                                                <span>Certificate Image Needed</span>
+                                                <span>Certificate Preview</span>
                                             </div>
                                         </div>
 
@@ -612,9 +659,11 @@ const Home = () => {
                                                 <p className="cert-overlay-org">{cert.organization}</p>
                                                 <div className="cert-overlay-footer">
                                                     <span className="cert-overlay-date">{cert.date}</span>
-                                                    <a href={cert.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
-                                                        Verify <ExternalLink size={14} />
-                                                    </a>
+                                                    {cert.link !== '#' && (
+                                                        <a href={cert.link} className="cert-verify-btn" target="_blank" rel="noopener noreferrer">
+                                                            Verify <ExternalLink size={14} />
+                                                        </a>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>
@@ -624,14 +673,14 @@ const Home = () => {
                         </div>
                     </section>
 
-                    {/* Hakathon certificate Section */}
+                    {/* Hackathon Certificates Section */}
                     <section className="achievements-section" ref={hackathonsRef}>
                         <div className="section-header-inline">
                             <div className="section-icon-box">
                                 <Trophy className="section-icon" />
                             </div>
                             <div className="section-title-group">
-                                <h2 className="section-main-title">Hackathon <span className="text-gradient">certificate</span></h2>
+                                <h2 className="section-main-title">Hackathon <span className="text-gradient">Milestones</span></h2>
                                 <p className="section-subtitle">Competitive events and rapid development challenges.</p>
                             </div>
                         </div>
@@ -654,7 +703,7 @@ const Home = () => {
                                             />
                                             <div className="cert-placeholder">
                                                 <span className="placeholder-icon">🚀</span>
-                                                <span>Hackathon Visual Needed</span>
+                                                <span>Hackathon Visual</span>
                                             </div>
                                         </div>
 
@@ -664,9 +713,11 @@ const Home = () => {
                                                 <p className="cert-overlay-org">{hack.project}</p>
                                                 <div className="cert-overlay-footer">
                                                     <span className="cert-overlay-date">{hack.organization} • {hack.date}</span>
-                                                    <a href={hack.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
-                                                        Details <ExternalLink size={14} />
-                                                    </a>
+                                                    {hack.link !== '#' && (
+                                                        <a href={hack.link} className="cert-verify-btn" target="_blank" rel="noopener noreferrer">
+                                                            Details <ExternalLink size={14} />
+                                                        </a>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>
