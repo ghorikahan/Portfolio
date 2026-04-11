@@ -1,7 +1,9 @@
 .achievements-page {
     min-height: 100vh;
-    padding-top: calc(var(--header-height) + 12rem); /* Increased to clear the floating navbar */
+    padding-top: calc(var(--header-height, 80px) + 12rem);
     padding-bottom: 8rem;
+    position: relative;
+    z-index: 10;
 }
 
 .page-header {

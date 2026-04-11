@@ -654,7 +654,6 @@
 /* ─── Achievements ─── */
 .achievements-section-home {
     padding: 12rem 0 8rem;
-    background: radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
 }
 
 .achievements-section,
@@ -1005,100 +1004,117 @@
 
 /* ─── Projects ─── */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    perspective: 1000px;
 }
 
 .project-card {
-    background: var(--stone);
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.35s ease;
-    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    min-height: 450px;
+    width: 100%;
+    background: var(--stone);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.project-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
-    transform-origin: left;
-    z-index: 1;
-}
-
-.project-card:hover {
-    background: var(--charcoal);
-    transform: translateY(-6px);
-    border-color: rgba(201, 168, 76, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.project-card:hover::before {
-    transform: scaleX(1);
+.project-card:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
 .project-content {
-    padding: 2rem;
+    flex: 1;
+    padding: 3.5rem;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(18, 18, 18, 0.95) 100%);
+    position: relative;
+    z-index: 2;
+}
+
+.project-image-container {
+    flex: 1.2;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.08);
 }
 
 .project-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 0.75rem;
+    font-size: 3rem;
     color: var(--white);
+    margin-bottom: 1rem;
     line-height: 1;
 }
 
 .project-description {
     color: var(--mid);
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 500px;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
 }
 
 .tag {
     font-family: 'DM Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    background: transparent;
-    color: var(--mid);
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--warm-gray);
-    transition: all 0.2s ease;
+    background: rgba(201, 168, 76, 0.05);
+    color: var(--gold);
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    border: 1px solid rgba(201, 168, 76, 0.15);
 }
 
 .project-card:hover .tag {
-    border-color: rgba(201, 168, 76, 0.25);
-    color: var(--pale);
+    background: rgba(201, 168, 76, 0.12);
+    border-color: var(--gold);
+}
+
+@media (max-width: 992px) {
+
+    .project-card,
+    .project-card:nth-child(even) {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .project-image-container {
+        height: 250px;
+    }
+
+    .project-content {
+        padding: 2.5rem;
+    }
+
+    .project-title {
+        font-size: 2.2rem;
+    }
 }
 
 .project-links {
@@ -1583,4 +1599,7 @@
 .hero-content:hover,
 .about-bio-column:hover {
     border-color: var(--gold);
+}
+
+border-color: var(--gold);
 }

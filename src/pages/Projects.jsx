@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, Github, ArrowRight, Youtube } from 'lucide-react';
+import { Globe, Github, ArrowRight, Youtube, Code } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TiltCard from '../components/TiltCard';
 import './Home.css'; // Reuse existing styles
@@ -47,7 +47,15 @@ const Projects = () => {
     const projects = [
         {
             title: "Mamaearth Clone",
+            category: "FRONTEND DEVELOPER",
+            id: "01",
             description: "A feature-rich e-commerce clone of the Mamaearth website, focusing on a clean UI, responsive product listings, and a modern shopping experience.",
+            implementation: [
+                "Built with React and Context API for global state management.",
+                "Implemented responsive product grids with filtering and sorting.",
+                "Custom CSS3 components with smooth transitions and hover states.",
+                "Full-featured cart and checkout simulation."
+            ],
             tags: ["React", "CSS3", "JavaScript"],
             image: new URL('../assets/mamaearth.png', import.meta.url).href,
             links: {
@@ -58,8 +66,16 @@ const Projects = () => {
         },
         {
             title: "AdilQuadri Clone",
+            category: "FRONTEND DEVELOPER",
+            id: "02",
             description: "A sophisticated e-commerce clone of the premium fragrance brand AdilQuadri, featuring luxury aesthetics and a seamless user interface.",
-            tags: ["React", "CSS3", "JavaScript"],
+            implementation: [
+                "Tailored UI with a premium feel and high-end aesthetics.",
+                "Dynamic routing and detailed product views.",
+                "GSAP integrated for page entrance animations.",
+                "Clean and elegant navigation system."
+            ],
+            tags: ["React", "CSS3", "JavaScript", "GSAP"],
             image: new URL('../assets/adilquadri.png', import.meta.url).href,
             links: {
                 demo: "https://adilquadri-clone.netlify.app/",
@@ -68,8 +84,16 @@ const Projects = () => {
             }
         },
         {
-            title: "On Clone",
-            description: "A high-performance e-commerce clone of the 'On' running brand website. Featuring sleek animations, a minimalistic design language, and a premium product showcase.",
+            title: "On Running Clone",
+            category: "CREATIVE FRONTEND",
+            id: "03",
+            description: "A high-performance e-commerce clone of the 'On' running brand. Pushed boundaries with complex layouts and sleek animations.",
+            implementation: [
+                "Tailwind CSS for utility-first styling and rapid responsiveness.",
+                "Framer Motion for complex entrance and scroll animations.",
+                "High-performance image optimization and lazy loading.",
+                "Interactive UI elements with custom transition effects."
+            ],
             tags: ["React", "Tailwind CSS", "Framer Motion"],
             image: new URL('../assets/on.png', import.meta.url).href,
             links: {
@@ -89,34 +113,70 @@ const Projects = () => {
                         <p className="section-desc">A collection of my work, experiments, and side projects.</p>
                     </div>
 
-                    <div className="projects-grid" ref={gridRef}>
+                    <div className="project-stack-container" ref={gridRef}>
                         {projects.map((project, index) => (
-                            <TiltCard
-                                key={index}
-                                className="project-card"
-                            >
-                                {project.image && (
-                                    <div className="project-image-container">
-                                        <img src={project.image} alt={project.title} className="project-image" />
-                                    </div>
-                                )}
-                                <div className="project-content">
-                                    <h3 className="project-title">{project.title}</h3>
-                                    <p className="project-description">{project.description}</p>
-                                    <div className="project-tags">
-                                        {project.tags.map(tag => (
-                                            <span key={tag} className="tag">{tag}</span>
-                                        ))}
-                                    </div>
-                                    <div className="project-links">
-                                        <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="link-item"><Globe size={16} /> Demo</a>
-                                        <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="link-item"><Github size={16} /> Code</a>
-                                        {project.links.video && (
-                                            <a href={project.links.video} target="_blank" rel="noopener noreferrer" className="link-item"><Youtube size={16} /> Video</a>
-                                        )}
+                            <div key={index} className="project-stack-item">
+                                <div className="project-stack-card">
+                                    <div className="card-inner-grid">
+                                        {/* Visual Side */}
+                                        <div className="card-visual-side">
+                                            <div className="browser-header">
+                                                <div className="dot"></div>
+                                                <div className="dot"></div>
+                                                <div className="dot"></div>
+                                            </div>
+                                            {project.image && (
+                                                <img src={project.image} alt={project.title} className="stack-image" />
+                                            )}
+                                        </div>
+
+                                        {/* Content Side */}
+                                        <div className="card-content-side">
+                                            <div className="card-top-header">
+                                                <span className="project-id text-gradient">{project.id} / 03</span>
+                                                <h3 className="project-stack-category">{project.category}</h3>
+                                            </div>
+
+                                            <h2 className="project-stack-title">{project.title}</h2>
+                                            <p className="project-stack-desc">{project.description}</p>
+
+                                            <div className="implementation-block">
+                                                <h4 className="impl-title">
+                                                    <Code size={16} /> IMPLEMENTATION
+                                                </h4>
+                                                <ul className="impl-list">
+                                                    {project.implementation.map((point, i) => (
+                                                        <li key={i} className="impl-item">
+                                                            <ArrowRight size={12} className="arrow" />
+                                                            {point}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            <div className="card-tags">
+                                                {project.tags.map(tag => (
+                                                    <span key={tag} className="stack-tag">{tag}</span>
+                                                ))}
+                                            </div>
+
+                                            <div className="card-actions">
+                                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary stack-btn">
+                                                    Live Demo <Globe size={16} />
+                                                </a>
+                                                <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="btn btn-outline stack-btn">
+                                                    GitHub <Github size={16} />
+                                                </a>
+                                                {project.links.video && (
+                                                    <a href={project.links.video} target="_blank" rel="noopener noreferrer" className="btn btn-outline stack-btn">
+                                                        Video <Youtube size={16} />
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </TiltCard>
+                            </div>
                         ))}
                     </div>
 

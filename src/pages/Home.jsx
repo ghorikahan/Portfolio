@@ -33,8 +33,11 @@ import electrosphereCert from '../assets/electrosphere-cert.png';
 import sangamHackathonCert from '../assets/sangam-hackathon.png';
 import codematrixRound1 from '../assets/codematrix-round1.png';
 import codematrixExcellence from '../assets/codematrix-excellence.png';
-import finagentHackathon from '../assets/finagent-hackathon.png';
 import sangamIdCard from '../assets/sangam-id-card.jpg';
+import finagentHackathon from '../assets/finagent-hackathon.png';
+import awsPdf from '../assets/AWS(Document DB).pdf';
+import databricksPdf from '../assets/databriks_machineLearning.pdf';
+import generativeAiPdf from '../assets/generative ai atudio from google cloud.pdf';
 import './Home.css';
 import TiltCard from '../components/TiltCard';
 import LeetCodeIcon from '../components/LeetCodeIcon';
@@ -131,21 +134,32 @@ const Home = () => {
             }
         );
 
-        // Featured Projects Animation
-        gsap.fromTo(gsap.utils.toArray('.project-card'),
-            { y: 80, opacity: 0, scale: 0.95 },
-            {
-                y: 0, opacity: 1, scale: 1,
-                duration: 1.4,
-                ease: "expo.out",
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: projectsRef.current,
-                    start: "top 75%",
-                    toggleActions: "play reverse play reverse"
+        // Featured Projects Animation (Sequential Reveal)
+        gsap.utils.toArray('.project-card').forEach((card, i) => {
+            gsap.fromTo(card,
+                { 
+                    y: 100, 
+                    opacity: 0, 
+                    scale: 0.9,
+                    rotateX: -10 
+                },
+                {
+                    y: 0, 
+                    opacity: 1, 
+                    scale: 1,
+                    rotateX: 0,
+                    duration: 1.5,
+                    ease: "expo.out",
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        end: "top 50%",
+                        scrub: 1,
+                        toggleActions: "play none none reverse"
+                    }
                 }
-            }
-        );
+            );
+        });
 
         // Certificates Animation
         const certificateCards = gsap.utils.toArray('.certificates-grid .certificate-card');
@@ -296,7 +310,15 @@ const Home = () => {
     const projects = [
         {
             title: "Mamaearth Clone",
+            category: "FRONTEND DEVELOPER",
+            id: "01",
             description: "A feature-rich e-commerce clone of the Mamaearth website, focusing on a clean UI, responsive product listings, and a modern shopping experience.",
+            implementation: [
+                "Built with React and Context API for global state management.",
+                "Implemented responsive product grids with filtering and sorting.",
+                "Custom CSS3 components with smooth transitions and hover states.",
+                "Full-featured cart and checkout simulation."
+            ],
             tags: ["React", "CSS3", "JavaScript"],
             image: new URL('../assets/mamaearth.png', import.meta.url).href,
             links: {
@@ -307,8 +329,16 @@ const Home = () => {
         },
         {
             title: "AdilQuadri Clone",
+            category: "FRONTEND DEVELOPER",
+            id: "02",
             description: "A sophisticated e-commerce clone of the premium fragrance brand AdilQuadri, featuring luxury aesthetics and a seamless user interface.",
-            tags: ["React", "CSS3", "JavaScript"],
+            implementation: [
+                "Tailored UI with a premium feel and high-end aesthetics.",
+                "Dynamic routing and detailed product views.",
+                "GSAP integrated for page entrance animations.",
+                "Clean and elegant navigation system."
+            ],
+            tags: ["React", "CSS3", "JavaScript", "GSAP"],
             image: new URL('../assets/adilquadri.png', import.meta.url).href,
             links: {
                 demo: "https://adilquadri-clone.netlify.app/",
@@ -317,8 +347,16 @@ const Home = () => {
             }
         },
         {
-            title: "On Clone",
-            description: "A high-performance e-commerce clone of the 'On' running brand website. Featuring sleek animations, a minimalistic design language, and a premium product showcase.",
+            title: "On Running Clone",
+            category: "CREATIVE FRONTEND",
+            id: "03",
+            description: "A high-performance e-commerce clone of the 'On' running brand. Pushed boundaries with complex layouts and sleek animations.",
+            implementation: [
+                "Tailwind CSS for utility-first styling and rapid responsiveness.",
+                "Framer Motion for complex entrance and scroll animations.",
+                "High-performance image optimization and lazy loading.",
+                "Interactive UI elements with custom transition effects."
+            ],
             tags: ["React", "Tailwind CSS", "Framer Motion"],
             image: new URL('../assets/on.png', import.meta.url).href,
             links: {
@@ -337,7 +375,8 @@ const Home = () => {
             year: "2026",
             date: "February 18th, 2026",
             image: awsCert,
-            link: "#"
+            pdf: awsPdf,
+            link: awsPdf
         },
         {
             title: "Get Started with Databricks for Machine Learning",
@@ -346,7 +385,8 @@ const Home = () => {
             year: "2026",
             date: "February 17th, 2026",
             image: databricksCert,
-            link: "#"
+            pdf: databricksPdf,
+            link: databricksPdf
         },
         {
             title: "Software Engineering Job Simulation",
@@ -374,6 +414,16 @@ const Home = () => {
             date: "March 6th, 2026",
             image: cppCert,
             link: "#"
+        },
+        {
+            title: "Generative AI Studio",
+            organization: "Google Cloud",
+            type: "Certificate of Completion",
+            year: "2026",
+            date: "2026",
+            image: awsCert, // Use a generic certificate image for placeholder
+            pdf: generativeAiPdf,
+            link: generativeAiPdf
         }
     ];
 
@@ -615,7 +665,7 @@ const Home = () => {
             <div className="achievements-section-home" id="achievements">
                 <div className="container">
                     <div className="section-header">
-                        <h2 className="section-title">Honours & <span className="text-gradient">Achievements</span></h2>
+                        <h2 className="section-title">Honors & <span className="text-gradient">Achievements</span></h2>
                         <p className="section-desc">Technical certifications and competitive milestones earned through rigorous training and challenges.</p>
                     </div>
 
@@ -626,7 +676,7 @@ const Home = () => {
                                 <Award className="section-icon" />
                             </div>
                             <div className="section-title-group">
-                                <h2 className="section-main-title">Technical <span className="text-gradient">Certificates</span></h2>
+                                <h2 className="section-main-title">Skill's <span className="text-gradient">certificate</span></h2>
                                 <p className="section-subtitle">Verified credentials and professional training in core technologies.</p>
                             </div>
                         </div>
@@ -659,11 +709,9 @@ const Home = () => {
                                                 <p className="cert-overlay-org">{cert.organization}</p>
                                                 <div className="cert-overlay-footer">
                                                     <span className="cert-overlay-date">{cert.date}</span>
-                                                    {cert.link !== '#' && (
-                                                        <a href={cert.link} className="cert-verify-btn" target="_blank" rel="noopener noreferrer">
-                                                            Verify <ExternalLink size={14} />
-                                                        </a>
-                                                    )}
+                                                    <a href={cert.pdf || (cert.link !== "#" ? cert.link : cert.image)} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                        Verify <ExternalLink size={14} />
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -680,7 +728,7 @@ const Home = () => {
                                 <Trophy className="section-icon" />
                             </div>
                             <div className="section-title-group">
-                                <h2 className="section-main-title">Hackathon <span className="text-gradient">Milestones</span></h2>
+                                <h2 className="section-main-title">Hackathon <span className="text-gradient">certificate</span></h2>
                                 <p className="section-subtitle">Competitive events and rapid development challenges.</p>
                             </div>
                         </div>
@@ -713,11 +761,9 @@ const Home = () => {
                                                 <p className="cert-overlay-org">{hack.project}</p>
                                                 <div className="cert-overlay-footer">
                                                     <span className="cert-overlay-date">{hack.organization} • {hack.date}</span>
-                                                    {hack.link !== '#' && (
-                                                        <a href={hack.link} className="cert-verify-btn" target="_blank" rel="noopener noreferrer">
-                                                            Details <ExternalLink size={14} />
-                                                        </a>
-                                                    )}
+                                                    <a href={hack.pdf || (hack.link !== "#" ? hack.link : hack.image)} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                        Details <ExternalLink size={14} />
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

@@ -12,8 +12,11 @@ import electrosphereCert from '../assets/electrosphere-cert.png';
 import sangamHackathonCert from '../assets/sangam-hackathon.png';
 import codematrixRound1 from '../assets/codematrix-round1.png';
 import codematrixExcellence from '../assets/codematrix-excellence.png';
-import finagentHackathon from '../assets/finagent-hackathon.png';
 import sangamIdCard from '../assets/sangam-id-card.jpg';
+import finagentHackathon from '../assets/finagent-hackathon.png';
+import awsPdf from '../assets/AWS(Document DB).pdf';
+import databricksPdf from '../assets/databriks_machineLearning.pdf';
+import generativeAiPdf from '../assets/generative ai atudio from google cloud.pdf';
 import './Achievements.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -68,7 +71,8 @@ const Achievements = () => {
             year: "2026",
             date: "February 18th, 2026",
             image: awsCert,
-            link: "#"
+            pdf: awsPdf,
+            link: awsPdf
         },
         {
             title: "Get Started with Databricks for Machine Learning",
@@ -77,7 +81,8 @@ const Achievements = () => {
             year: "2026",
             date: "February 17th, 2026",
             image: databricksCert,
-            link: "#"
+            pdf: databricksPdf,
+            link: databricksPdf
         },
         {
             title: "Software Engineering Job Simulation",
@@ -105,6 +110,16 @@ const Achievements = () => {
             date: "March 6th, 2026",
             image: cppCert,
             link: "#"
+        },
+        {
+            title: "Generative AI Studio",
+            organization: "Google Cloud",
+            type: "Certificate of Completion",
+            year: "2026",
+            date: "2026",
+            image: awsCert, // Use a generic certificate image for placeholder
+            pdf: generativeAiPdf,
+            link: generativeAiPdf
         }
     ];
 
@@ -138,7 +153,7 @@ const Achievements = () => {
             role: "Developer",
             year: "2026",
             date: "2026",
-            image: finagentHackathon,
+            image: electrosphereCert,
             achievement: "National Participation",
             link: "#"
         },
@@ -203,7 +218,7 @@ const Achievements = () => {
                                             <p className="cert-overlay-org">{cert.organization}</p>
                                             <div className="cert-overlay-footer">
                                                 <span className="cert-overlay-date">{cert.date}</span>
-                                                <a href={cert.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                <a href={cert.pdf || (cert.link !== "#" ? cert.link : cert.image)} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
                                                     Verify <ExternalLink size={14} />
                                                 </a>
                                             </div>
@@ -255,7 +270,7 @@ const Achievements = () => {
                                             <p className="cert-overlay-org">{hack.project}</p>
                                             <div className="cert-overlay-footer">
                                                 <span className="cert-overlay-date">{hack.organization} • {hack.date}</span>
-                                                <a href={hack.link} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                <a href={hack.pdf || (hack.link !== "#" ? hack.link : hack.image)} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
                                                     Details <ExternalLink size={14} />
                                                 </a>
                                             </div>
@@ -272,4 +287,3 @@ const Achievements = () => {
 };
 
 export default Achievements;
-

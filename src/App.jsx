@@ -15,6 +15,7 @@ import BackToTop from './components/BackToTop';
 import BackgroundEffects from './components/BackgroundEffects';
 import StarField from './components/StarField';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Lenis from 'lenis';
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
       <ScrollProgress />
       <Cursor />
       <BackToTop />
+      <ScrollToTop />
       <Navbar />
       <main>
         <AnimatePresence mode="wait">

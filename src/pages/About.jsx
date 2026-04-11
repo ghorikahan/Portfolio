@@ -13,7 +13,7 @@ const About = () => {
     const headerRef = useRef(null);
     const imageRef = useRef(null);
     const bioRef = useRef(null);
-    const statsRef = useRef(null);
+
     const timelineRef = useRef(null);
 
     useEffect(() => {
@@ -28,11 +28,7 @@ const About = () => {
                 { y: 0, opacity: 1, duration: 0.8, stagger: 0.2 },
                 "-=0.4"
             )
-            .fromTo(statsRef.current.children,
-                { scale: 0.8, opacity: 0 },
-                { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1 },
-                "-=0.4"
-            );
+
 
         // Timeline Animation
         gsap.fromTo(timelineRef.current.children,
@@ -55,11 +51,7 @@ const About = () => {
         };
     }, []);
 
-    const stats = [
-        { label: "Years Experience", value: "2+" },
-        { label: "Projects Completed", value: "15+" },
-        { label: "Happy Clients", value: "5+" }
-    ];
+
 
     const experience = [
         {
@@ -124,14 +116,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="stats-row" ref={statsRef}>
-                        {stats.map((stat, i) => (
-                            <div key={i} className="stat-card">
-                                <h3 className="stat-value text-gradient">{stat.value}</h3>
-                                <p className="stat-label">{stat.label}</p>
-                            </div>
-                        ))}
-                    </div>
+
                 </div>
             </section>
 
