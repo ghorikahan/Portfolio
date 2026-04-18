@@ -18,7 +18,7 @@ const Footer = () => {
                             I'm currently available for freelance work and open to full-time opportunities.
                         </p>
                         <div className="footer-actions" style={{ justifyContent: 'center' }}>
-                            <a href="/resume.pdf" target="_blank" className="resume-btn">
+                            <a href="https://drive.google.com/file/d/1bd52a3ZnxiUEKhT2Kuu2Jfhz9BsMXbMB/view?usp=sharing" target="_blank" className="resume-btn">
                                 <FileText size={18} />
                                 View Resume
                             </a>

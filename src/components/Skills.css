@@ -2,7 +2,7 @@
     padding: 8rem 0;
     position: relative;
     overflow: hidden;
-    background: transparent; /* Allows global background effects to show through */
+    background: transparent;
 }
 
 .marquee-skills-header {
@@ -26,22 +26,13 @@
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-.marquee-content {
-    display: flex;
-    gap: 1.5rem;
-    animation: marquee 100s linear infinite; /* Slowed down further to 100s */
-    padding: 0.5rem 0;
-}
-
 .skill-row {
     display: flex;
     gap: 1.5rem;
     width: max-content;
     padding: 0.5rem 0;
-    /* Framer Motion will be replaced or supplemented by this for easier pausing */
 }
 
-/* Marquee Animation Classes */
 .animate-marquee-right {
     animation: marquee-right linear infinite;
 }
@@ -81,10 +72,9 @@
 }
 
 [data-theme="light"] .skill-pill {
-    background: #fff; /* True white for contrast on off-white bg */
+    background: #ffffff;
     border-color: var(--slate);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    backdrop-filter: none; /* Avoid muddiness in light mode */
 }
 
 .skill-pill:hover {
@@ -120,23 +110,17 @@
 }
 
 [data-theme="light"] .skill-name {
-    color: #1a1714; /* Sharper dark for text */
-}
-
-@keyframes float-glow {
-    0% { transform: translateY(-50%) scale(1); opacity: 0.1; }
-    50% { transform: translateY(-40%) scale(1.1); opacity: 0.2; }
-    100% { transform: translateY(-60%) scale(0.9); opacity: 0.15; }
+    color: #1a1714;
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold, #c9a84c) 100%);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 @media (max-width: 768px) {
-    .skills-section {
+    .marquee-skills-section {
         padding: 5rem 0;
     }
     
@@ -146,10 +130,5 @@
     
     .skill-name {
         font-size: 0.85rem;
-    }
-    
-    .skills-bg-glow {
-        width: 300px;
-        height: 300px;
     }
 }

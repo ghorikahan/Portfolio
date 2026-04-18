@@ -114,7 +114,7 @@ const About = () => {
                                 or debugging life one coffee at a time.
                             </p>
 
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '2rem' }}>
+                            <a href="https://drive.google.com/file/d/1bd52a3ZnxiUEKhT2Kuu2Jfhz9BsMXbMB/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '2rem' }}>
                                 Download CV <Download size={18} />
                             </a>
                         </div>

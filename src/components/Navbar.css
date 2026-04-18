@@ -203,25 +203,22 @@
     box-shadow: 0 4px 12px var(--shadow-color);
     position: relative;
     z-index: 2;
-    transition: all 0.3s ease;
+    /* Transition removed to let Framer Motion handle it */
 }
 
-.theme-switch.light .theme-switch-handle {
-    transform: translateX(28px);
-}
-
-[data-theme="light"] .theme-switch-handle {
-    background: #fff;
-    color: #000;
-}
+/* data-theme overrides handled by Framer Motion color mapping */
 
 .theme-switch:hover {
     transform: scale(1.05);
     border-color: var(--gold);
 }
 
-.nav-command-icon {
-    color: var(--text-secondary);
+.theme-toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 /* --- Mobile --- */

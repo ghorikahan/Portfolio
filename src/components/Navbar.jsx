@@ -92,16 +92,38 @@ const Navbar = () => {
                         <div className={`theme-switch ${theme}`}>
                             <motion.div 
                                 className="theme-switch-fill"
-                                animate={{ width: theme === 'light' ? '100%' : '0%' }}
-                                transition={{ type: "spring", stiffness: 400, damping: 40 }}
+                                initial={false}
+                                animate={{ 
+                                    x: theme === 'light' ? 0 : -60,
+                                    opacity: theme === 'light' ? 1 : 0 
+                                }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
                             />
                             <motion.div 
                                 className="theme-switch-handle"
-                                layout
-                                transition={{ type: "spring", stiffness: 800, damping: 35 }}
+                                initial={false}
+                                animate={{ 
+                                    x: theme === 'light' ? 28 : 0,
+                                    rotate: theme === 'light' ? 360 : 0
+                                }}
+                                transition={{ 
+                                    duration: 0.45,
+                                    ease: [0.23, 1, 0.32, 1]
+                                }}
                             >
                                 <div className="theme-toggle-icon">
-                                    {theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={theme}
+                                            initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+                                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                                            exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+                                            transition={{ duration: 0.25 }}
+                                            style={{ display: 'flex' }}
+                                        >
+                                            {theme === 'dark' ? <Moon size={14} /> : <Sun size={14} />}
+                                        </motion.div>
+                                    </AnimatePresence>
                                 </div>
                             </motion.div>
                         </div>

@@ -555,9 +555,9 @@ const Home = () => {
 
                         <div className="hero-footer">
                             <div ref={actionsRef} className="hero-actions">
-                                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                                <a href="https://drive.google.com/file/d/1bd52a3ZnxiUEKhT2Kuu2Jfhz9BsMXbMB/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                                     View Resume <FileText size={18} />
-                                </a>
+</a>
                                 <Link to="/contact" className="btn btn-outline">
                                     Contact Me
                                 </Link>
