@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://ghorikahan.vercel.app/sitemap.xml
+Sitemap: https://ghorikahan.netlify.app/sitemap.xml

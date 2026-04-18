@@ -5,6 +5,7 @@ import { Mail, MapPin, Send, Github, Linkedin, Youtube, Phone } from 'lucide-rea
 import LeetCodeIcon from '../components/LeetCodeIcon';
 import './Contact.css';
 import { useForm, ValidationError } from '@formspree/react';
+import { Helmet } from 'react-helmet-async';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,6 +43,12 @@ const Contact = () => {
 
     return (
         <div className="contact-page">
+            <Helmet>
+                <title>Hire Ghori Kahan | Contact a MERN Stack Developer</title>
+                <meta name="description" content="Get in touch with Ghori Kahan for freelance projects, full-time opportunities, or collaborations. Based in Gandhinagar, Gujarat, India." />
+                <meta name="keywords" content="Hire MERN developer India, freelance React developer Gujarat, contact Ghori Kahan, web developer for hire" />
+                <link rel="canonical" href="https://ghorikahan.netlify.app/contact" />
+            </Helmet>
             <section className="section contact-hero">
                 <div className="container">
                     <div ref={headerRef} className="section-header text-center">

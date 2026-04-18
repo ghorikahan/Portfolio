@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ExternalLink, Award, Trophy, Rocket } from 'lucide-react';
+import { ExternalLink, Award, Trophy, Rocket, X, Github, Globe, Play, MapPin, Calendar, Users } from 'lucide-react';
 import jpmorganCert from '../assets/jpmorgan-certificate.jpg';
 import microsoftCert from '../assets/microsoft-certificate.jpg';
 import parulCert from '../assets/parul-certificate.jpg';
@@ -24,6 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Achievements = () => {
     const certificatesRef = useRef(null);
     const hackathonsRef = useRef(null);
+    const [activeModal, setActiveModal] = useState(null);
 
     useEffect(() => {
         // Certificates Animation
@@ -62,6 +64,16 @@ const Achievements = () => {
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
     }, []);
+
+    // Lock body scroll when modal is open
+    useEffect(() => {
+        if (activeModal !== null) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [activeModal]);
 
     const certificates = [
         {
@@ -110,16 +122,6 @@ const Achievements = () => {
             date: "March 6th, 2026",
             image: cppCert,
             link: "#"
-        },
-        {
-            title: "Generative AI Studio",
-            organization: "Google Cloud",
-            type: "Certificate of Completion",
-            year: "2026",
-            date: "2026",
-            image: awsCert, // Use a generic certificate image for placeholder
-            pdf: generativeAiPdf,
-            link: generativeAiPdf
         }
     ];
 
@@ -128,50 +130,95 @@ const Achievements = () => {
             title: "CodeMatrix: Genesis Hackathon",
             project: "Competitive Coding Round 1",
             organization: "AITH, Kanpur",
+            location: "Kanpur, Uttar Pradesh",
             role: "Developer (Team CodeDeterminant)",
             year: "2026",
             date: "2026",
             image: codematrixRound1,
+            modalImage: codematrixRound1,
             achievement: "Round 1 Milestone",
+            description: "Participated in the CodeMatrix Genesis Hackathon organized by AITH Kanpur. Our team CodeDeterminant cleared the competitive coding Round 1 by solving algorithmic challenges under strict time constraints, demonstrating strong problem-solving and teamwork capabilities.",
+            techStack: ["React", "Node.js", "MongoDB", "Express"],
+            team: "Team CodeDeterminant",
+            demoLink: null,
+            githubLink: "https://github.com",
+            liveLink: null,
             link: "#"
         },
         {
             title: "CodeMatrix: Genesis Excellence",
             project: "CodeMatrix Genesis Achievement",
             organization: "GDG DR AITD, Kanpur",
+            location: "Kanpur, Uttar Pradesh",
             role: "Developer",
             year: "2026",
             date: "2026",
             image: codematrixExcellence,
+            modalImage: codematrixExcellence,
             achievement: "Certificate of Excellence",
+            description: "Awarded the Certificate of Excellence at CodeMatrix Genesis organized by GDG DR AITD Kanpur. Recognized for outstanding performance in full-stack development challenges and innovative solution design throughout the hackathon rounds.",
+            techStack: ["JavaScript", "React", "TailwindCSS", "Firebase"],
+            team: "Solo",
+            demoLink: null,
+            githubLink: "https://github.com",
+            liveLink: null,
             link: "#"
         },
         {
             title: "FinAgent Hackathon",
             project: "Financial Technology Innovation",
             organization: "IIT Bombay (Unstop)",
+            location: "Mumbai, Maharashtra (Remote)",
             role: "Developer",
             year: "2026",
             date: "2026",
             image: electrosphereCert,
+            modalImage: finagentHackathon,
             achievement: "National Participation",
+            description: "Competed in the FinAgent Hackathon hosted by IIT Bombay on the Unstop platform. Built an intelligent financial agent system that leveraged AI to automate budgeting, expense tracking, and financial insights for end users—competing at a national level.",
+            techStack: ["Python", "FastAPI", "React", "OpenAI API", "PostgreSQL"],
+            team: "Team of 3",
+            demoLink: null,
+            githubLink: "https://github.com",
+            liveLink: "https://example.com",
             link: "#"
         },
         {
             title: "Tech Expo 2026",
             project: "Expenses Management System",
             organization: "Parul University",
+            location: "Vadodara, Gujarat",
             role: "Developer",
             year: "2026",
-            date: "Feb 3rd-4th, 2026",
+            date: "Feb 3rd–4th, 2026",
             image: parulCert,
+            modalImage: parulCert,
             achievement: "Participation & Showcase",
+            description: "Showcased the Expenses Management System at Tech Expo 2026, Parul University. The project featured a full-stack application for tracking personal and team expenses with real-time dashboards, category analytics, and smart spend predictions.",
+            techStack: ["React", "Node.js", "Express", "MongoDB", "Chart.js"],
+            team: "Team of 2",
+            demoLink: null,
+            githubLink: "https://github.com",
+            liveLink: "https://example.com",
             link: "#"
         }
     ];
 
+    const openModal = (index) => setActiveModal(index);
+    const closeModal = () => setActiveModal(null);
+
+    const handleBackdropClick = (e) => {
+        if (e.target === e.currentTarget) closeModal();
+    };
+
     return (
         <div className="achievements-page">
+            <Helmet>
+                <title>Certificates & Hackathons | Ghori Kahan Achievements</title>
+                <meta name="description" content="View verified certificates from AWS, Google Cloud, Microsoft, JPMorgan & hackathon wins from IIT Bombay and CodeMatrix by Ghori Kahan." />
+                <meta name="keywords" content="AWS certificate, Google Cloud certificate, JPMorgan simulation, CodeMatrix hackathon, Ghori Kahan certifications" />
+                <link rel="canonical" href="https://ghorikahan.netlify.app/achievements" />
+            </Helmet>
             <div className="container">
                 <div className="page-header text-center">
                     <h1 className="page-title">Honors & <span className="text-gradient">Achievements</span></h1>
@@ -270,9 +317,12 @@ const Achievements = () => {
                                             <p className="cert-overlay-org">{hack.project}</p>
                                             <div className="cert-overlay-footer">
                                                 <span className="cert-overlay-date">{hack.organization} • {hack.date}</span>
-                                                <a href={hack.pdf || (hack.link !== "#" ? hack.link : hack.image)} className="cert-overlay-link" target="_blank" rel="noopener noreferrer">
+                                                <button
+                                                    className="cert-overlay-link hack-details-btn"
+                                                    onClick={() => openModal(index)}
+                                                >
                                                     Details <ExternalLink size={14} />
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -282,6 +332,110 @@ const Achievements = () => {
                     </div>
                 </section>
             </div>
+
+            {/* Hackathon Detail Modal */}
+            {activeModal !== null && (
+                <div className="hack-modal-backdrop" onClick={handleBackdropClick}>
+                    <div className="hack-modal">
+                        {/* Close Button */}
+                        <button className="hack-modal-close" onClick={closeModal} aria-label="Close">
+                            <X size={20} />
+                        </button>
+
+                        {/* Left: Image */}
+                        <div className="hack-modal-left">
+                            <div className="hack-modal-img-wrap">
+                                <img
+                                    src={hackathons[activeModal].modalImage}
+                                    alt={hackathons[activeModal].title}
+                                    className="hack-modal-img"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'flex';
+                                    }}
+                                />
+                                <div className="hack-modal-img-fallback">
+                                    <Rocket size={56} />
+                                    <span>No Image</span>
+                                </div>
+                            </div>
+                            <div className="hack-modal-badge-row">
+                                <span className="hack-modal-achievement-badge">
+                                    🏆 {hackathons[activeModal].achievement}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Right: Details */}
+                        <div className="hack-modal-right">
+                            <div className="hack-modal-tag">Hackathon</div>
+                            <h2 className="hack-modal-title">{hackathons[activeModal].title}</h2>
+                            <p className="hack-modal-project">{hackathons[activeModal].project}</p>
+
+                            <div className="hack-modal-meta">
+                                <div className="hack-meta-item">
+                                    <MapPin size={14} />
+                                    <span>{hackathons[activeModal].location}</span>
+                                </div>
+                                <div className="hack-meta-item">
+                                    <Calendar size={14} />
+                                    <span>{hackathons[activeModal].date}</span>
+                                </div>
+                                <div className="hack-meta-item">
+                                    <Users size={14} />
+                                    <span>{hackathons[activeModal].team} · {hackathons[activeModal].role}</span>
+                                </div>
+                            </div>
+
+                            <p className="hack-modal-description">{hackathons[activeModal].description}</p>
+
+                            {/* Tech Stack */}
+                            <div className="hack-modal-tech-row">
+                                {hackathons[activeModal].techStack.map((tech, i) => (
+                                    <span key={i} className="hack-tech-chip">{tech}</span>
+                                ))}
+                            </div>
+
+                            {/* Links */}
+                            <div className="hack-modal-links">
+                                {hackathons[activeModal].githubLink && (
+                                    <a
+                                        href={hackathons[activeModal].githubLink}
+                                        className="hack-link-btn hack-link-github"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <Github size={16} />
+                                        GitHub
+                                    </a>
+                                )}
+                                {hackathons[activeModal].demoLink && (
+                                    <a
+                                        href={hackathons[activeModal].demoLink}
+                                        className="hack-link-btn hack-link-demo"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <Play size={16} />
+                                        Demo
+                                    </a>
+                                )}
+                                {hackathons[activeModal].liveLink && (
+                                    <a
+                                        href={hackathons[activeModal].liveLink}
+                                        className="hack-link-btn hack-link-live"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <Globe size={16} />
+                                        Live Link
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

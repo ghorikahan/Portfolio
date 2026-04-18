@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download, Briefcase, GraduationCap, Code, Award } from 'lucide-react';
+import { Download, Briefcase, GraduationCap } from 'lucide-react';
 import profileImg from '../assets/Gemini_Generated_Image_7n4fz57n4fz57n4f.png';
 import './About.css';
 import TiltCard from '../components/TiltCard';
+import { Helmet } from 'react-helmet-async';
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +15,6 @@ const About = () => {
     const headerRef = useRef(null);
     const imageRef = useRef(null);
     const bioRef = useRef(null);
-
     const timelineRef = useRef(null);
 
     useEffect(() => {
@@ -27,8 +28,7 @@ const About = () => {
                 { y: 30, opacity: 0 },
                 { y: 0, opacity: 1, duration: 0.8, stagger: 0.2 },
                 "-=0.4"
-            )
-
+            );
 
         // Timeline Animation
         gsap.fromTo(timelineRef.current.children,
@@ -51,8 +51,6 @@ const About = () => {
         };
     }, []);
 
-
-
     const experience = [
         {
             type: "education",
@@ -71,7 +69,7 @@ const About = () => {
         {
             type: "education",
             role: "CodingGita",
-            company: "Student",
+            company: "Student | 1st Sem SGPA: 9.67",
             period: "2025 - 2029",
             desc: "Learning and growing at CodingGita, where the curriculum is exceptional and the environment is perfect for mastering modern web technologies. It's a fantastic place to build a strong foundation in software development."
         }
@@ -79,6 +77,12 @@ const About = () => {
 
     return (
         <div className="about-page" ref={containerRef}>
+            <Helmet>
+                <title>About Ghori Kahan | The Developer behind the Code</title>
+                <meta name="description" content="Learn about Ghori Kahan's journey as a MERN Stack Developer. From secondary education to advanced web development at CodingGita." />
+                <meta name="keywords" content="Ghori Kahan Biography, CodingGita student, MERN Developer history, web developer journey" />
+                <link rel="canonical" href="https://ghorikahan.netlify.app/about" />
+            </Helmet>
             <section className="section about-hero">
                 <div className="container">
                     <div ref={headerRef} className="section-header text-center">
@@ -115,10 +119,10 @@ const About = () => {
                             </a>
                         </div>
                     </div>
-
-
                 </div>
             </section>
+
+
 
             <section className="section timeline-section">
                 <div className="container">

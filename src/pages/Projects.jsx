@@ -1,193 +1,261 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, Github, ArrowRight, Youtube, Code } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import TiltCard from '../components/TiltCard';
-import './Home.css'; // Reuse existing styles
-import './Projects.css'; // Projects-specific styles
+import { Globe, Github, Youtube, Trophy, Gamepad2, Code2 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import memoryFlipImg from '../assets/memory-flip-game.png';
+import ticTacToeImg from '../assets/tic-tac-toe-game.png';
+import colorGuessingImg from '../assets/color-guessing-game.png';
+import whackAMoleImg from '../assets/whack-a-mole-game.png';
+import typingGameImg from '../assets/typing-game.png';
+import clickCounterImg from '../assets/click-counter-game.png';
+import learnSmartImg from '../assets/learnsmart-hackathon.png';
+import craftathonImg from '../assets/craftathon-hackathon.png';
+import './Projects.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
     const headerRef = useRef(null);
-    const gridRef = useRef(null);
+    const sectionsRef = useRef([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-        tl.fromTo(headerRef.current,
+        // Header Entrance
+        gsap.fromTo(headerRef.current,
             { y: 30, opacity: 0 },
             { y: 0, opacity: 1, duration: 0.8, delay: 0.2 }
         );
 
-        const cards = gsap.utils.toArray('.project-card');
-        gsap.fromTo(cards,
-            { y: 50, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.15,
-                scrollTrigger: {
-                    trigger: gridRef.current,
-                    start: "top 85%",
-                }
+        // Sections stagger entrance
+        sectionsRef.current.forEach((section, index) => {
+            if (section) {
+                gsap.fromTo(section.querySelectorAll('.compact-proj-card'),
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 0.7,
+                        stagger: 0.1,
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%",
+                        }
+                    }
+                );
             }
-        );
+        });
 
         return () => {
-            tl.kill();
             ScrollTrigger.getAll().forEach(t => t.kill());
         };
     }, []);
 
-    const projects = [
-        {
-            title: "Mamaearth Clone",
-            category: "FRONTEND DEVELOPER",
-            id: "01",
-            description: "A feature-rich e-commerce clone of the Mamaearth website, focusing on a clean UI, responsive product listings, and a modern shopping experience.",
-            implementation: [
-                "Built with React and Context API for global state management.",
-                "Implemented responsive product grids with filtering and sorting.",
-                "Custom CSS3 components with smooth transitions and hover states.",
-                "Full-featured cart and checkout simulation."
-            ],
-            tags: ["React", "CSS3", "JavaScript"],
-            image: new URL('../assets/mamaearth.png', import.meta.url).href,
-            links: {
-                demo: "https://lambent-arithmetic-6de4fa.netlify.app/",
-                code: "https://github.com/ghorikahan/Website-Clone/tree/main/Website-3-Mamaearth",
-                video: "https://youtu.be/_pX3Evdr20U"
+    const projectData = {
+        frontend: [
+            {
+                title: "Mamaearth Clone",
+                description: "A feature-rich e-commerce clone of the Mamaearth website, focusing on a clean UI and responsive product listings.",
+                tags: ["React", "CSS3", "Context API"],
+                image: new URL('../assets/mamaearth.png', import.meta.url).href,
+                links: {
+                    demo: "https://lambent-arithmetic-6de4fa.netlify.app/",
+                    code: "https://github.com/ghorikahan/Website-Clone/tree/main/Website-3-Mamaearth",
+                    video: "https://youtu.be/_pX3Evdr20U"
+                }
+            },
+            {
+                title: "AdilQuadri Clone",
+                description: "A sophisticated e-commerce clone of the premium fragrance brand AdilQuadri with luxury aesthetics.",
+                tags: ["React", "CSS3", "GSAP"],
+                image: new URL('../assets/adilquadri.png', import.meta.url).href,
+                links: {
+                    demo: "https://adilquadri-clone.netlify.app/",
+                    code: "https://github.com/ghorikahan/Website-Clone/tree/main/Website-4-adilquadri",
+                    video: "https://youtu.be/DfU-GbvsFA0"
+                }
+            },
+            {
+                title: "On Running Clone",
+                description: "A high-performance e-commerce clone of the 'On' running brand featuring complex layouts and sleek animations.",
+                tags: ["React", "Tailwind CSS", "Framer Motion"],
+                image: new URL('../assets/on.png', import.meta.url).href,
+                links: {
+                    demo: "https://delightful-lolly-d0cceb.netlify.app/",
+                    code: "https://github.com/ghorikahan/Website-Clone/tree/main/Website-5-on",
+                    video: "https://youtu.be/7gAJA2iyHwA"
+                }
             }
-        },
-        {
-            title: "AdilQuadri Clone",
-            category: "FRONTEND DEVELOPER",
-            id: "02",
-            description: "A sophisticated e-commerce clone of the premium fragrance brand AdilQuadri, featuring luxury aesthetics and a seamless user interface.",
-            implementation: [
-                "Tailored UI with a premium feel and high-end aesthetics.",
-                "Dynamic routing and detailed product views.",
-                "GSAP integrated for page entrance animations.",
-                "Clean and elegant navigation system."
-            ],
-            tags: ["React", "CSS3", "JavaScript", "GSAP"],
-            image: new URL('../assets/adilquadri.png', import.meta.url).href,
-            links: {
-                demo: "https://adilquadri-clone.netlify.app/",
-                code: "https://github.com/ghorikahan/Website-Clone/tree/main/Website-4-adilquadri",
-                video: "https://youtu.be/DfU-GbvsFA0"
+        ],
+        gameDev: [
+            {
+                title: "Click Counter",
+                description: "A fun interactive counter app with smooth click animations and a live click tracker. Built with vanilla HTML, CSS & JS.",
+                tags: ["HTML", "CSS", "JavaScript"],
+                image: clickCounterImg,
+                links: {
+                    demo: "https://rainbow-selkie-abefa7.netlify.app/",
+                    code: "https://github.com/ghorikahan/Games/tree/main/Click-Counter"
+                }
+            },
+            {
+                title: "Typing Game",
+                description: "A speed-typing challenge that tests your WPM with real-time feedback, countdown timer and accuracy tracking.",
+                tags: ["HTML", "CSS", "JavaScript"],
+                image: typingGameImg,
+                links: {
+                    demo: "https://extraordinary-bonbon-2c6507.netlify.app/",
+                    code: "https://github.com/ghorikahan/Games/tree/main/Typing-game"
+                }
+            },
+            {
+                title: "Whack-a-Mole",
+                description: "Classic whack-a-mole arcade game with progressive difficulty, score counter and responsive hit detection.",
+                tags: ["HTML", "CSS", "JavaScript"],
+                image: whackAMoleImg,
+                links: {
+                    demo: "https://harmonious-macaron-a9f311.netlify.app/",
+                    code: "https://github.com/ghorikahan/Games/tree/main/Wack-a-mole"
+                }
+            },
+            {
+                title: "Color Guessing",
+                description: "A color-guessing challenge — identify the right color from its RGB value. Multiple difficulty levels for added fun.",
+                tags: ["HTML", "CSS", "JavaScript"],
+                image: colorGuessingImg,
+                links: {
+                    demo: "https://moonlit-dragon-e26370.netlify.app/",
+                    code: "https://github.com/ghorikahan/Games/tree/main/Color-Guessing"
+                }
+            },
+            {
+                title: "Tic-Tac-Toe",
+                description: "Two-player Tic-Tac-Toe with win detection, draw handling and an animated restart button. Clean minimal UI.",
+                tags: ["HTML", "CSS", "JavaScript"],
+                image: ticTacToeImg,
+                links: {
+                    demo: "https://incredible-squirrel-1c129d.netlify.app/",
+                    code: "https://github.com/ghorikahan/Games/tree/main/Tic-Tac-Toe"
+                }
+            },
+            {
+                title: "Memory Flip",
+                description: "Card-flip memory matching game with a shuffled deck, move counter and smooth flip animation on every card.",
+                tags: ["HTML", "CSS", "JavaScript"],
+                image: memoryFlipImg,
+                links: {
+                    demo: "https://lustrous-begonia-eee3dc.netlify.app/",
+                    code: "https://github.com/ghorikahan/Games/tree/main/Memory-flip"
+                }
             }
-        },
-        {
-            title: "On Running Clone",
-            category: "CREATIVE FRONTEND",
-            id: "03",
-            description: "A high-performance e-commerce clone of the 'On' running brand. Pushed boundaries with complex layouts and sleek animations.",
-            implementation: [
-                "Tailwind CSS for utility-first styling and rapid responsiveness.",
-                "Framer Motion for complex entrance and scroll animations.",
-                "High-performance image optimization and lazy loading.",
-                "Interactive UI elements with custom transition effects."
-            ],
-            tags: ["React", "Tailwind CSS", "Framer Motion"],
-            image: new URL('../assets/on.png', import.meta.url).href,
-            links: {
-                demo: "https://delightful-lolly-d0cceb.netlify.app/",
-                code: "https://github.com/ghorikahan/Website-Clone/tree/main/Website-5-on",
-                video: "https://youtu.be/7gAJA2iyHwA"
+        ],
+        hackathons: [
+            {
+                title: "Craftathon — BehaveGuard",
+                description: "Built BehaveGuard at Craftathon GU — a behavioral biometrics security platform that continuously authenticates users through typing patterns, touch dynamics & navigation habits. 99.9% accuracy, <10ms response, zero friction.",
+                tags: ["React", "Biometrics AI", "Node.js", "Security"],
+                image: craftathonImg,
+                links: {
+                    demo: "https://craftathon-gu.vercel.app/",
+                    code: "https://github.com/Kanishka-Trivedi/CRAFTATHON_GU"
+                }
+            },
+            {
+                title: "LearnSmart AI Platform",
+                description: "AI-powered e-learning dashboard with personalized learning paths, Focus Timer (Pomodoro), AI recommendations, skill assessments & progress analytics.",
+                tags: ["React", "Node.js", "MongoDB", "AI API"],
+                image: learnSmartImg,
+                links: {
+                    demo: "https://learn-smart-project.netlify.app/",
+                    code: "https://github.com/ghorikahan/ELearningPlatform"
+                }
             }
-        }
-    ];
+        ]
+    };
+
+    const renderProjectGrid = (categoryKey) => (
+        <div className="compact-projects-grid">
+            {projectData[categoryKey].map((project, index) => (
+                <div key={index} className="compact-proj-card project-card">
+                    <div className="compact-card-inner">
+                        <div className="compact-card-image">
+                            <div className="compact-browser-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                            {project.image && <img src={project.image} alt={project.title} className="compact-img" />}
+                        </div>
+                        <div className="compact-card-info">
+                            <div className="compact-info-head">
+                                <h3 className="compact-title">{project.title}</h3>
+                            </div>
+                            <p className="compact-desc">{project.description}</p>
+                            <div className="compact-tech-tags">
+                                {project.tags.map(tag => (
+                                    <span key={tag} className="compact-tag">{tag}</span>
+                                ))}
+                            </div>
+                            <div className="compact-actions">
+                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="compact-btn-live">
+                                    Demo <Globe size={14} />
+                                </a>
+                                <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="compact-btn-icon">
+                                    <Github size={18} />
+                                </a>
+                                {project.links.video && (
+                                    <a href={project.links.video} target="_blank" rel="noopener noreferrer" className="compact-btn-icon btn-video">
+                                        <Youtube size={18} />
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 
     return (
         <div className="projects-page">
+            <Helmet>
+                <title>Project Portfolio | Ghori Kahan | MERN Stack Work</title>
+                <meta name="description" content="Explore a diverse portfolio of web applications, games, and hackathon wins by Ghori Kahan. Featuring React, Node.js, and Unity projects." />
+                <meta name="keywords" content="React projects, MERN stack portfolio, Game development, Unity games, Ghori Kahan projects" />
+                <link rel="canonical" href="https://ghorikahan.netlify.app/projects" />
+            </Helmet>
+
             <section className="section" style={{ minHeight: '100vh', paddingTop: '120px' }}>
                 <div className="container">
                     <div ref={headerRef} className="section-header">
-                        <h1 className="section-title">All <span className="text-gradient">Projects</span></h1>
-                        <p className="section-desc">A collection of my work, experiments, and side projects.</p>
+                        <h1 className="section-title">Featured <span className="text-gradient">Projects</span></h1>
+                        <p className="section-desc">A deep dive into my specialized work across multiple domains.</p>
                     </div>
 
-                    <div className="project-stack-container" ref={gridRef}>
-                        {projects.map((project, index) => (
-                            <div key={index} className="project-stack-item">
-                                <div className="project-stack-card">
-                                    <div className="card-inner-grid">
-                                        {/* Visual Side */}
-                                        <div className="card-visual-side">
-                                            <div className="browser-header">
-                                                <div className="dot"></div>
-                                                <div className="dot"></div>
-                                                <div className="dot"></div>
-                                            </div>
-                                            {project.image && (
-                                                <img src={project.image} alt={project.title} className="stack-image" />
-                                            )}
-                                        </div>
-
-                                        {/* Content Side */}
-                                        <div className="card-content-side">
-                                            <div className="card-top-header">
-                                                <span className="project-id text-gradient">{project.id} / 03</span>
-                                                <h3 className="project-stack-category">{project.category}</h3>
-                                            </div>
-
-                                            <h2 className="project-stack-title">{project.title}</h2>
-                                            <p className="project-stack-desc">{project.description}</p>
-
-                                            <div className="implementation-block">
-                                                <h4 className="impl-title">
-                                                    <Code size={16} /> IMPLEMENTATION
-                                                </h4>
-                                                <ul className="impl-list">
-                                                    {project.implementation.map((point, i) => (
-                                                        <li key={i} className="impl-item">
-                                                            <ArrowRight size={12} className="arrow" />
-                                                            {point}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-
-                                            <div className="card-tags">
-                                                {project.tags.map(tag => (
-                                                    <span key={tag} className="stack-tag">{tag}</span>
-                                                ))}
-                                            </div>
-
-                                            <div className="card-actions">
-                                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="btn btn-primary stack-btn">
-                                                    Live Demo <Globe size={16} />
-                                                </a>
-                                                <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="btn btn-outline stack-btn">
-                                                    GitHub <Github size={16} />
-                                                </a>
-                                                {project.links.video && (
-                                                    <a href={project.links.video} target="_blank" rel="noopener noreferrer" className="btn btn-outline stack-btn">
-                                                        Video <Youtube size={16} />
-                                                    </a>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                    {/* FRONTEND SECTION */}
+                    <div className="category-section" ref={el => sectionsRef.current[0] = el}>
+                        <div className="category-header">
+                            <Code2 className="category-icon" />
+                            <h2>Frontend Websites</h2>
+                        </div>
+                        {renderProjectGrid('frontend')}
                     </div>
 
-                    {/* Footer / CTA Area */}
-                    <div style={{ marginTop: '6rem', textAlign: 'center' }}>
-                        <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-                            Working on something new?
-                        </p>
-                        <Link to="/contact" className="btn btn-primary">
-                            Let's Collaborate <ArrowRight size={18} />
-                        </Link>
+                    {/* GAME DEV SECTION */}
+                    <div className="category-section" ref={el => sectionsRef.current[1] = el}>
+                        <div className="category-header">
+                            <Gamepad2 className="category-icon" />
+                            <h2>Game Development</h2>
+                        </div>
+                        {renderProjectGrid('gameDev')}
+                    </div>
+
+                    {/* HACKATHON SECTION */}
+                    <div className="category-section" ref={el => sectionsRef.current[2] = el}>
+                        <div className="category-header">
+                            <Trophy className="category-icon" />
+                            <h2>Hackathon Projects</h2>
+                        </div>
+                        {renderProjectGrid('hackathons')}
                     </div>
                 </div>
             </section>

@@ -373,6 +373,538 @@
     transform: translateX(3px);
 }
 
+/* ══════════════════════════════════════════
+   GAMES PROJECTS SECTION
+══════════════════════════════════════════ */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Game card emoji panel — replaces cert-image-container */
+.game-emoji-panel {
+    position: relative;
+    width: 100%;
+    padding-bottom: 70.7%;          /* same ratio as cert cards */
+    background: linear-gradient(135deg, #1a1814 0%, #141210 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    line-height: 1;
+    filter: drop-shadow(0 0 24px rgba(201, 168, 76, 0.35));
+    transition: transform 0.4s ease, filter 0.4s ease;
+    z-index: 2;
+    user-select: none;
+}
+
+.game-card:hover .game-emoji {
+    transform: translate(-50%, -50%) scale(1.15);
+    filter: drop-shadow(0 0 36px rgba(201, 168, 76, 0.6));
+}
+
+/* Subtle radial glow behind emoji */
+.game-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+    z-index: 1;
+    transition: background 0.4s ease;
+}
+
+.game-card:hover .game-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(201, 168, 76, 0.18) 0%, transparent 70%);
+}
+
+/* Make game overlay always slightly visible so desc is readable */
+.game-overlay {
+    background: linear-gradient(to bottom,
+        rgba(14, 13, 11, 0.05) 0%,
+        rgba(14, 13, 11, 0.88) 45%,
+        rgba(14, 13, 11, 0.98) 100%) !important;
+}
+
+/* Description inside overlay */
+.game-overlay-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.6rem;
+    transition: all 0.3s ease;
+}
+
+/* Tiny tag chips */
+.game-overlay-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.game-tag-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(201, 168, 76, 0.75);
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 50px;
+}
+
+/* Link buttons row inside game overlay */
+.game-overlay-links {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.12);
+}
+
+.game-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.38rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    text-decoration: none;
+}
+
+.game-link-demo {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+}
+
+.game-link-demo:hover {
+    background: var(--gold-light, #e0c060);
+    border-color: var(--gold-light, #e0c060);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(201, 168, 76, 0.3);
+}
+
+.game-link-gh {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.game-link-gh:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1.25rem;
+    }
+
+    .game-emoji {
+        font-size: 3.2rem;
+    }
+
+    .game-overlay {
+        opacity: 0.96 !important;
+    }
+
+    .cert-overlay-content {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* ─── Hackathon Details Button (inside card overlay) ─── */
+.hack-details-btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* ══════════════════════════════════════════
+   HACKATHON DETAIL MODAL
+══════════════════════════════════════════ */
+.hack-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    animation: backdropFadeIn 0.25s ease;
+}
+
+@keyframes backdropFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.hack-modal {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 820px;
+    min-height: 420px;
+    max-height: 90vh;
+    background: #141210;
+    border: 1px solid rgba(201, 168, 76, 0.18);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(201, 168, 76, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ── Close Button ── */
+.hack-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    background: rgba(14, 13, 11, 0.9);
+    color: var(--mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hack-modal-close:hover {
+    background: rgba(201, 168, 76, 0.15);
+    color: var(--gold);
+    border-color: rgba(201, 168, 76, 0.5);
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* ── Left Panel ── */
+.hack-modal-left {
+    flex: 0 0 42%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.hack-modal-img-wrap {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.hack-modal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+    filter: brightness(0.9) contrast(1.05);
+}
+
+.hack-modal:hover .hack-modal-img {
+    transform: scale(1.03);
+}
+
+.hack-modal-img-fallback {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201, 168, 76, 0.08), rgba(201, 168, 76, 0.02));
+    color: var(--mid);
+}
+
+.hack-modal-img-fallback svg {
+    color: var(--gold);
+    opacity: 0.4;
+}
+
+.hack-modal-badge-row {
+    padding: 0.85rem 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+    flex-shrink: 0;
+}
+
+.hack-modal-achievement-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* ── Right Panel ── */
+.hack-modal-right {
+    flex: 1;
+    padding: 2rem 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(201, 168, 76, 0.2) transparent;
+}
+
+.hack-modal-right::-webkit-scrollbar {
+    width: 4px;
+}
+
+.hack-modal-right::-webkit-scrollbar-thumb {
+    background: rgba(201, 168, 76, 0.25);
+    border-radius: 4px;
+}
+
+.hack-modal-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201, 168, 76, 0.1);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+    margin-bottom: 0.85rem;
+    width: fit-content;
+}
+
+.hack-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.5px;
+}
+
+.hack-modal-project {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
+}
+
+.hack-modal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.hack-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--mid);
+    letter-spacing: 0.5px;
+}
+
+.hack-meta-item svg {
+    color: var(--gold);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.hack-modal-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 1.25rem;
+    flex: 1;
+}
+
+/* Tech Stack chips */
+.hack-modal-tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hack-tech-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+}
+
+.hack-tech-chip:hover {
+    background: rgba(201, 168, 76, 0.1);
+    border-color: rgba(201, 168, 76, 0.3);
+    color: var(--gold);
+}
+
+/* Link Buttons */
+.hack-modal-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.hack-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.55rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hack-link-github {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.hack-link-github:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.hack-link-demo {
+    background: rgba(201, 168, 76, 0.1);
+    border-color: rgba(201, 168, 76, 0.3);
+    color: var(--gold);
+}
+
+.hack-link-demo:hover {
+    background: rgba(201, 168, 76, 0.2);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.hack-link-live {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+}
+
+.hack-link-live:hover {
+    background: var(--gold-light, #e0c060);
+    border-color: var(--gold-light, #e0c060);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 168, 76, 0.35);
+}
+
+/* ── Modal Responsive ── */
+@media (max-width: 640px) {
+    .hack-modal {
+        flex-direction: column;
+        max-height: 92vh;
+        border-radius: 16px;
+    }
+
+    .hack-modal-left {
+        flex: 0 0 220px;
+        min-height: 220px;
+    }
+
+    .hack-modal-img-wrap {
+        height: 100%;
+    }
+
+    .hack-modal-right {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .hack-modal-title {
+        font-size: 1.6rem;
+    }
+}
+
+
 @media (max-width: 1024px) {
 
     .certificates-grid,
