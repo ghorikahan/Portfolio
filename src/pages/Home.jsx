@@ -411,28 +411,6 @@ const Home = () => {
                     code: "https://github.com/ghorikahan/ELearningPlatform"
                 }
             }
-        ],
-        uiux: [
-            {
-                title: "Fintech Dashboard Design",
-                description: "A comprehensive dashboard for managing investments and assets with a focus on data visualization and accessibility.",
-                tags: ["Figma", "User Research", "Prototyping"],
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80\u0026w=1000",
-                links: {
-                    demo: "https://www.figma.com/",
-                    code: "#"
-                }
-            },
-            {
-                title: "Travel App Mobile UI",
-                description: "A modern travel booking application UI focusing on seamless pathfinding and personalized trip planning.",
-                tags: ["Figma", "Interaction Design", "Mobile UI"],
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80\u0026w=1000",
-                links: {
-                    demo: "https://www.figma.com/",
-                    code: "#"
-                }
-            }
         ]
     };
 
@@ -772,44 +750,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    {/* UI/UX Design Section */}
-                    <div className="category-section" style={{ marginTop: '4rem' }}>
-                        <div className="category-header-inline">
-                            <Layout className="category-icon" />
-                            <h3 className="category-title">UI/UX <span className="text-gradient">Design</span></h3>
-                        </div>
-                        <div className="compact-projects-grid">
-                            {projectData.uiux.map((project, index) => (
-                                <div key={index} className="compact-proj-card project-card">
-                                    <div className="compact-card-inner">
-                                        <div className="compact-card-image">
-                                            <div className="compact-browser-dots">
-                                                <span></span><span></span><span></span>
-                                            </div>
-                                            {project.image && <img src={project.image} alt={project.title} className="compact-img" />}
-                                        </div>
-                                        <div className="compact-card-info">
-                                            <h3 className="compact-title">{project.title}</h3>
-                                            <p className="compact-desc">{project.description}</p>
-                                            <div className="compact-tech-tags">
-                                                {project.tags.map(tag => (
-                                                    <span key={tag} className="compact-tag">{tag}</span>
-                                                ))}
-                                            </div>
-                                            <div className="compact-actions">
-                                                <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="compact-btn-live">
-                                                    DEMO <Globe size={14} />
-                                                </a>
-                                                <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="compact-btn-icon">
-                                                    <Github size={18} />
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    
                 </div>
             </section>
 
