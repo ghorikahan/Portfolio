@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, Github, Youtube, Trophy, Gamepad2, Code2 } from 'lucide-react';
+import { Globe, Github, Youtube, Trophy, Gamepad2, Code2, Layout } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import memoryFlipImg from '../assets/memory-flip-game.png';
 import ticTacToeImg from '../assets/tic-tac-toe-game.png';
@@ -171,6 +171,28 @@ const Projects = () => {
                     code: "https://github.com/ghorikahan/ELearningPlatform"
                 }
             }
+        ],
+        uiux: [
+            {
+                title: "Fintech Dashboard Design",
+                description: "A comprehensive dashboard for managing investments and assets with a focus on data visualization and accessibility.",
+                tags: ["Figma", "User Research", "Prototyping"],
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80\u0026w=1000",
+                links: {
+                    demo: "https://www.figma.com/",
+                    code: "#"
+                }
+            },
+            {
+                title: "Travel App Mobile UI",
+                description: "A modern travel booking application UI focusing on seamless pathfinding and personalized trip planning.",
+                tags: ["Figma", "Interaction Design", "Mobile UI"],
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80\u0026w=1000",
+                links: {
+                    demo: "https://www.figma.com/",
+                    code: "#"
+                }
+            }
         ]
     };
 
@@ -232,7 +254,7 @@ const Projects = () => {
                     </div>
 
                     {/* FRONTEND SECTION */}
-                    <div className="category-section" ref={el => sectionsRef.current[0] = el}>
+                    <div className="category-section" ref={el => sectionsRef.current[0] = el} id="frontend">
                         <div className="category-header">
                             <Code2 className="category-icon" />
                             <h2>Frontend Websites</h2>
@@ -241,7 +263,7 @@ const Projects = () => {
                     </div>
 
                     {/* GAME DEV SECTION */}
-                    <div className="category-section" ref={el => sectionsRef.current[1] = el}>
+                    <div className="category-section" ref={el => sectionsRef.current[1] = el} id="game-dev">
                         <div className="category-header">
                             <Gamepad2 className="category-icon" />
                             <h2>Game Development</h2>
@@ -250,12 +272,21 @@ const Projects = () => {
                     </div>
 
                     {/* HACKATHON SECTION */}
-                    <div className="category-section" ref={el => sectionsRef.current[2] = el}>
+                    <div className="category-section" ref={el => sectionsRef.current[2] = el} id="hackathons">
                         <div className="category-header">
                             <Trophy className="category-icon" />
                             <h2>Hackathon Projects</h2>
                         </div>
                         {renderProjectGrid('hackathons')}
+                    </div>
+
+                    {/* UI/UX SECTION */}
+                    <div className="category-section" ref={el => sectionsRef.current[3] = el} id="ui-ux-design">
+                        <div className="category-header">
+                            <Layout className="category-icon" />
+                            <h2>UI/UX Design</h2>
+                        </div>
+                        {renderProjectGrid('uiux')}
                     </div>
                 </div>
             </section>

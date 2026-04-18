@@ -41,6 +41,7 @@ const Navbar = () => {
         { name: 'Work', path: '/projects' },
         { name: 'Achievements', path: '/achievements' },
     ];
+
     return (
         <motion.nav 
             className={`navbar ${scrolled ? 'scrolled' : ''}`}

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
@@ -16,10 +16,12 @@ import BackgroundEffects from './components/BackgroundEffects';
 import StarField from './components/StarField';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import Preloader from './components/Preloader';
 import Lenis from 'lenis';
 
 function App() {
   const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -50,33 +52,41 @@ function App() {
 
   return (
     <div className="app">
-      <BackgroundEffects />
-      <StarField />
-      <ScrollProgress />
-      <Cursor />
-      <BackToTop />
-      <ScrollToTop />
-      <Navbar />
-      <main>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/achievements" element={<Achievements />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </motion.div>
-        </AnimatePresence>
-      </main>
-      <Footer />
+      <AnimatePresence>
+        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+      
+      {!isLoading && (
+        <>
+          <BackgroundEffects />
+          <StarField />
+          <ScrollProgress />
+          <Cursor />
+          <BackToTop />
+          <ScrollToTop />
+          <Navbar />
+          <main>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Routes location={location} key={location.pathname}>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/achievements" element={<Achievements />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </motion.div>
+            </AnimatePresence>
+          </main>
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
