@@ -171,28 +171,6 @@ const Projects = () => {
                     code: "https://github.com/ghorikahan/ELearningPlatform"
                 }
             }
-        ],
-        uiux: [
-            {
-                title: "Fintech Dashboard Design",
-                description: "A comprehensive dashboard for managing investments and assets with a focus on data visualization and accessibility.",
-                tags: ["Figma", "User Research", "Prototyping"],
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80\u0026w=1000",
-                links: {
-                    demo: "https://www.figma.com/",
-                    code: "#"
-                }
-            },
-            {
-                title: "Travel App Mobile UI",
-                description: "A modern travel booking application UI focusing on seamless pathfinding and personalized trip planning.",
-                tags: ["Figma", "Interaction Design", "Mobile UI"],
-                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80\u0026w=1000",
-                links: {
-                    demo: "https://www.figma.com/",
-                    code: "#"
-                }
-            }
         ]
     };
 
@@ -279,15 +257,7 @@ const Projects = () => {
                         </div>
                         {renderProjectGrid('hackathons')}
                     </div>
-
-                    {/* UI/UX SECTION */}
-                    <div className="category-section" ref={el => sectionsRef.current[3] = el} id="ui-ux-design">
-                        <div className="category-header">
-                            <Layout className="category-icon" />
-                            <h2>UI/UX Design</h2>
-                        </div>
-                        {renderProjectGrid('uiux')}
-                    </div>
+                    
                 </div>
             </section>
         </div>
