@@ -49,6 +49,7 @@ import awsPdf from '../assets/AWS(Document DB).pdf';
 import databricksPdf from '../assets/databriks_machineLearning.pdf';
 import generativeAiPdf from '../assets/generative ai atudio from google cloud.pdf';
 import { Helmet } from 'react-helmet-async';
+import logoImg from '../assets/gk-logo.svg';
 import './Home.css';
 import TiltCard from '../components/TiltCard';
 import LeetCodeIcon from '../components/LeetCodeIcon';
@@ -523,7 +524,10 @@ const Home = () => {
             <section className="hero" ref={heroRef}>
                 <div className="container hero-container">
                     <div className="hero-content">
-                        <span ref={greetingRef} className="greeting">Hello, I'm</span>
+                        <div className="greeting-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                            <img src={logoImg} alt="GK" style={{ width: '32px', height: '32px' }} />
+                            <span ref={greetingRef} className="greeting">Hello, I'm</span>
+                        </div>
                         <h1 ref={titleRef} className="hero-title">
                             <span className="text-gradient">Ghori Kahan</span> <br />
                             <div className="dynamic-title-wrapper" style={{
