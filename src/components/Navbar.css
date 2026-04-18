@@ -152,7 +152,12 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    margin-right: 4rem;
+}
+
+@media (min-width: 1025px) {
+    .nav-right-actions {
+        margin-right: 2rem;
+    }
 }
 
 .theme-switch-wrapper {
@@ -203,6 +208,11 @@
 
 .theme-switch.light .theme-switch-handle {
     transform: translateX(28px);
+}
+
+[data-theme="light"] .theme-switch-handle {
+    background: #fff;
+    color: #000;
 }
 
 .theme-switch:hover {

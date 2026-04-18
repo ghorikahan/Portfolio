@@ -67,10 +67,10 @@
   --stone: #f0ece6;
   --slate: #e5e0d8;
   --warm-gray: #d6cfc5;
-  --mid: #8a7f72;
+  --mid: #7a7065; /* Darker for better visibility */
   --pale: #4a443d;
   --cream: #0a0908;
-  --white: #0a0908;
+  --white: #0a0908; /* Semantically: standard text color on bg */
 
   /* ── Semantic Mappings ── */
   --bg-primary: var(--ink);
@@ -79,18 +79,18 @@
 
   --text-primary: #0a0908;
   --text-secondary: #4a443d;
-  --text-muted: #8a7f72;
+  --text-muted: #7a7065;
 
-  --border-subtle: rgba(201, 168, 76, 0.15);
-  --border-light: rgba(201, 168, 76, 0.3);
+  --border-subtle: rgba(201, 168, 76, 0.1);
+  --border-light: rgba(201, 168, 76, 0.2);
 
   /* ── Dynamic Layout Surfaces ── */
-  --surface-glass: rgba(255, 255, 255, 0.8);
-  --surface-glass-top: rgba(255, 255, 255, 0.95);
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --glow-opacity: 0.04;
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  --surface-glass-top: rgba(255, 255, 255, 0.9);
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --glow-opacity: 0.02;
 
-  --accent-glow: rgba(201, 168, 76, 0.2);
+  --accent-glow: rgba(201, 168, 76, 0.15);
 }
 
 html {
